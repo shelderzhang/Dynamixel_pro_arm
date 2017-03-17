@@ -1,0 +1,14 @@
+#Specify minimum cmake requirements
+cmake_minimum_required(VERSION 2.8.12)
+
+
+project(Dynamixel_pro_arm)
+
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
+include_directories("${PROJECT_SOURCE_DIR}/include")
+
+aux_source_directory(. SRC_LIST)
+add_executable(dynamixel_arm ${SRC_LIST})
+
+
+
