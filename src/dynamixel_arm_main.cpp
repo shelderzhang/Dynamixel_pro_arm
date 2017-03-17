@@ -170,7 +170,6 @@ int main()
     {
    	//get pos and vel
     	dynamixelController.get_position();
-    	printf("Succeeded to get position!\n");
     	dynamixelController.get_velocity();
     	dxl1_present_position = dynamixelController.dxl1_pre_pos;
 		dxl2_present_position = dynamixelController.dxl2_pre_pos;

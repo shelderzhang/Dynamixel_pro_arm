@@ -28,30 +28,30 @@ The CXX compiler identification is GNU, found in "/home/gyz/src/Dynamixel_pro_ar
 Determining if the C compiler works passed with the following output:
 Change Dir: /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec3032750232/fast"
-/usr/bin/make -f CMakeFiles/cmTryCompileExec3032750232.dir/build.make CMakeFiles/cmTryCompileExec3032750232.dir/build
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2639899218/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2639899218.dir/build.make CMakeFiles/cmTryCompileExec2639899218.dir/build
 make[1]: Entering directory `/home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp'
 /usr/bin/cmake -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec3032750232.dir/testCCompiler.c.o
-/usr/bin/cc    -o CMakeFiles/cmTryCompileExec3032750232.dir/testCCompiler.c.o   -c /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTryCompileExec3032750232
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3032750232.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTryCompileExec3032750232.dir/testCCompiler.c.o  -o cmTryCompileExec3032750232 -rdynamic 
+Building C object CMakeFiles/cmTryCompileExec2639899218.dir/testCCompiler.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec2639899218.dir/testCCompiler.c.o   -c /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTryCompileExec2639899218
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2639899218.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTryCompileExec2639899218.dir/testCCompiler.c.o  -o cmTryCompileExec2639899218 -rdynamic 
 make[1]: Leaving directory `/home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp'
 
 
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec1075503013/fast"
-/usr/bin/make -f CMakeFiles/cmTryCompileExec1075503013.dir/build.make CMakeFiles/cmTryCompileExec1075503013.dir/build
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3717873437/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3717873437.dir/build.make CMakeFiles/cmTryCompileExec3717873437.dir/build
 make[1]: Entering directory `/home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp'
 /usr/bin/cmake -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec1075503013.dir/CMakeCCompilerABI.c.o
-/usr/bin/cc    -o CMakeFiles/cmTryCompileExec1075503013.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.2/Modules/CMakeCCompilerABI.c
-Linking C executable cmTryCompileExec1075503013
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1075503013.dir/link.txt --verbose=1
-/usr/bin/cc      -v CMakeFiles/cmTryCompileExec1075503013.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec1075503013 -rdynamic  
+Building C object CMakeFiles/cmTryCompileExec3717873437.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec3717873437.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.2/Modules/CMakeCCompilerABI.c
+Linking C executable cmTryCompileExec3717873437
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3717873437.dir/link.txt --verbose=1
+/usr/bin/cc      -v CMakeFiles/cmTryCompileExec3717873437.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec3717873437 -rdynamic  
 Using built-in specs.
 COLLECT_GCC=/usr/bin/cc
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/4.8/lto-wrapper
@@ -61,8 +61,8 @@ Thread model: posix
 gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.3) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec1075503013' '-rdynamic' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec1075503013 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec1075503013.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec3717873437' '-rdynamic' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec3717873437 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec3717873437.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o
 make[1]: Leaving directory `/home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp'
 
 
@@ -70,15 +70,15 @@ Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTryCompileExec1075503013/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec1075503013.dir/build.make CMakeFiles/cmTryCompileExec1075503013.dir/build]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTryCompileExec3717873437/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec3717873437.dir/build.make CMakeFiles/cmTryCompileExec3717873437.dir/build]
   ignore line: [make[1]: Entering directory `/home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp']
   ignore line: [/usr/bin/cmake -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp/CMakeFiles 1]
-  ignore line: [Building C object CMakeFiles/cmTryCompileExec1075503013.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTryCompileExec1075503013.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.2/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTryCompileExec1075503013]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1075503013.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/cc      -v CMakeFiles/cmTryCompileExec1075503013.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec1075503013 -rdynamic  ]
+  ignore line: [Building C object CMakeFiles/cmTryCompileExec3717873437.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTryCompileExec3717873437.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.2/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTryCompileExec3717873437]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3717873437.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc      -v CMakeFiles/cmTryCompileExec3717873437.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec3717873437 -rdynamic  ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/4.8/lto-wrapper]
@@ -88,8 +88,8 @@ Parsed C implicit link information from above output:
   ignore line: [gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.3) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec1075503013' '-rdynamic' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec1075503013 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec1075503013.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec3717873437' '-rdynamic' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec3717873437 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec3717873437.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/collect2] ==> ignore
     arg [--sysroot=/] ==> ignore
     arg [--build-id] ==> ignore
@@ -103,7 +103,7 @@ Parsed C implicit link information from above output:
     arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTryCompileExec1075503013] ==> ignore
+    arg [cmTryCompileExec3717873437] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o] ==> ignore
@@ -115,7 +115,7 @@ Parsed C implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../..]
-    arg [CMakeFiles/cmTryCompileExec1075503013.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTryCompileExec3717873437.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--as-needed] ==> ignore
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -149,15 +149,15 @@ Parsed C implicit link information from above output:
 Detecting C [-std=c11] compiler features compiled with the following output:
 Change Dir: /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec2771542102/fast"
-/usr/bin/make -f CMakeFiles/cmTryCompileExec2771542102.dir/build.make CMakeFiles/cmTryCompileExec2771542102.dir/build
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1202056728/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1202056728.dir/build.make CMakeFiles/cmTryCompileExec1202056728.dir/build
 make[1]: Entering directory `/home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp'
 /usr/bin/cmake -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec2771542102.dir/feature_tests.c.o
-/usr/bin/cc   -std=c11 -o CMakeFiles/cmTryCompileExec2771542102.dir/feature_tests.c.o   -c /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/feature_tests.c
-Linking C executable cmTryCompileExec2771542102
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2771542102.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTryCompileExec2771542102.dir/feature_tests.c.o  -o cmTryCompileExec2771542102 -rdynamic 
+Building C object CMakeFiles/cmTryCompileExec1202056728.dir/feature_tests.c.o
+/usr/bin/cc   -std=c11 -o CMakeFiles/cmTryCompileExec1202056728.dir/feature_tests.c.o   -c /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/feature_tests.c
+Linking C executable cmTryCompileExec1202056728
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1202056728.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTryCompileExec1202056728.dir/feature_tests.c.o  -o cmTryCompileExec1202056728 -rdynamic 
 make[1]: Leaving directory `/home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp'
 
 
@@ -170,15 +170,15 @@ make[1]: Leaving directory `/home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMa
 Detecting C [-std=c99] compiler features compiled with the following output:
 Change Dir: /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec2816208517/fast"
-/usr/bin/make -f CMakeFiles/cmTryCompileExec2816208517.dir/build.make CMakeFiles/cmTryCompileExec2816208517.dir/build
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1378536253/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1378536253.dir/build.make CMakeFiles/cmTryCompileExec1378536253.dir/build
 make[1]: Entering directory `/home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp'
 /usr/bin/cmake -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec2816208517.dir/feature_tests.c.o
-/usr/bin/cc   -std=c99 -o CMakeFiles/cmTryCompileExec2816208517.dir/feature_tests.c.o   -c /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/feature_tests.c
-Linking C executable cmTryCompileExec2816208517
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2816208517.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTryCompileExec2816208517.dir/feature_tests.c.o  -o cmTryCompileExec2816208517 -rdynamic 
+Building C object CMakeFiles/cmTryCompileExec1378536253.dir/feature_tests.c.o
+/usr/bin/cc   -std=c99 -o CMakeFiles/cmTryCompileExec1378536253.dir/feature_tests.c.o   -c /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/feature_tests.c
+Linking C executable cmTryCompileExec1378536253
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1378536253.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTryCompileExec1378536253.dir/feature_tests.c.o  -o cmTryCompileExec1378536253 -rdynamic 
 make[1]: Leaving directory `/home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp'
 
 
@@ -191,15 +191,15 @@ make[1]: Leaving directory `/home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMa
 Detecting C [-std=c90] compiler features compiled with the following output:
 Change Dir: /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec3417206199/fast"
-/usr/bin/make -f CMakeFiles/cmTryCompileExec3417206199.dir/build.make CMakeFiles/cmTryCompileExec3417206199.dir/build
+Run Build Command:"/usr/bin/make" "cmTryCompileExec4102988046/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec4102988046.dir/build.make CMakeFiles/cmTryCompileExec4102988046.dir/build
 make[1]: Entering directory `/home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp'
 /usr/bin/cmake -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec3417206199.dir/feature_tests.c.o
-/usr/bin/cc   -std=c90 -o CMakeFiles/cmTryCompileExec3417206199.dir/feature_tests.c.o   -c /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/feature_tests.c
-Linking C executable cmTryCompileExec3417206199
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3417206199.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTryCompileExec3417206199.dir/feature_tests.c.o  -o cmTryCompileExec3417206199 -rdynamic 
+Building C object CMakeFiles/cmTryCompileExec4102988046.dir/feature_tests.c.o
+/usr/bin/cc   -std=c90 -o CMakeFiles/cmTryCompileExec4102988046.dir/feature_tests.c.o   -c /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/feature_tests.c
+Linking C executable cmTryCompileExec4102988046
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4102988046.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTryCompileExec4102988046.dir/feature_tests.c.o  -o cmTryCompileExec4102988046 -rdynamic 
 make[1]: Leaving directory `/home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp'
 
 
@@ -210,30 +210,30 @@ make[1]: Leaving directory `/home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMa
 Determining if the CXX compiler works passed with the following output:
 Change Dir: /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec4194865580/fast"
-/usr/bin/make -f CMakeFiles/cmTryCompileExec4194865580.dir/build.make CMakeFiles/cmTryCompileExec4194865580.dir/build
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3849737626/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3849737626.dir/build.make CMakeFiles/cmTryCompileExec3849737626.dir/build
 make[1]: Entering directory `/home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp'
 /usr/bin/cmake -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec4194865580.dir/testCXXCompiler.cxx.o
-/usr/bin/c++     -o CMakeFiles/cmTryCompileExec4194865580.dir/testCXXCompiler.cxx.o -c /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTryCompileExec4194865580
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4194865580.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTryCompileExec4194865580.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec4194865580 -rdynamic 
+Building CXX object CMakeFiles/cmTryCompileExec3849737626.dir/testCXXCompiler.cxx.o
+/usr/bin/c++     -o CMakeFiles/cmTryCompileExec3849737626.dir/testCXXCompiler.cxx.o -c /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTryCompileExec3849737626
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3849737626.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTryCompileExec3849737626.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec3849737626 -rdynamic 
 make[1]: Leaving directory `/home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp'
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec1463698676/fast"
-/usr/bin/make -f CMakeFiles/cmTryCompileExec1463698676.dir/build.make CMakeFiles/cmTryCompileExec1463698676.dir/build
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1219337319/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1219337319.dir/build.make CMakeFiles/cmTryCompileExec1219337319.dir/build
 make[1]: Entering directory `/home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp'
 /usr/bin/cmake -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec1463698676.dir/CMakeCXXCompilerABI.cpp.o
-/usr/bin/c++     -o CMakeFiles/cmTryCompileExec1463698676.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.2/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTryCompileExec1463698676
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1463698676.dir/link.txt --verbose=1
-/usr/bin/c++       -v CMakeFiles/cmTryCompileExec1463698676.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec1463698676 -rdynamic  
+Building CXX object CMakeFiles/cmTryCompileExec1219337319.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++     -o CMakeFiles/cmTryCompileExec1219337319.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.2/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTryCompileExec1219337319
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1219337319.dir/link.txt --verbose=1
+/usr/bin/c++       -v CMakeFiles/cmTryCompileExec1219337319.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec1219337319 -rdynamic  
 Using built-in specs.
 COLLECT_GCC=/usr/bin/c++
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/4.8/lto-wrapper
@@ -243,8 +243,8 @@ Thread model: posix
 gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.3) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec1463698676' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec1463698676 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec1463698676.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec1219337319' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec1219337319 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec1219337319.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o
 make[1]: Leaving directory `/home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp'
 
 
@@ -252,15 +252,15 @@ Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTryCompileExec1463698676/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec1463698676.dir/build.make CMakeFiles/cmTryCompileExec1463698676.dir/build]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTryCompileExec1219337319/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec1219337319.dir/build.make CMakeFiles/cmTryCompileExec1219337319.dir/build]
   ignore line: [make[1]: Entering directory `/home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp']
   ignore line: [/usr/bin/cmake -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp/CMakeFiles 1]
-  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec1463698676.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/usr/bin/c++     -o CMakeFiles/cmTryCompileExec1463698676.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.2/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTryCompileExec1463698676]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1463698676.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/c++       -v CMakeFiles/cmTryCompileExec1463698676.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec1463698676 -rdynamic  ]
+  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec1219337319.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/c++     -o CMakeFiles/cmTryCompileExec1219337319.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.2/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTryCompileExec1219337319]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1219337319.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/c++       -v CMakeFiles/cmTryCompileExec1219337319.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec1219337319 -rdynamic  ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/c++]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/4.8/lto-wrapper]
@@ -270,8 +270,8 @@ Parsed CXX implicit link information from above output:
   ignore line: [gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.3) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec1463698676' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec1463698676 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec1463698676.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec1219337319' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec1219337319 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec1219337319.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/collect2] ==> ignore
     arg [--sysroot=/] ==> ignore
     arg [--build-id] ==> ignore
@@ -285,7 +285,7 @@ Parsed CXX implicit link information from above output:
     arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTryCompileExec1463698676] ==> ignore
+    arg [cmTryCompileExec1219337319] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o] ==> ignore
@@ -297,7 +297,7 @@ Parsed CXX implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../..]
-    arg [CMakeFiles/cmTryCompileExec1463698676.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [CMakeFiles/cmTryCompileExec1219337319.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -329,15 +329,15 @@ Parsed CXX implicit link information from above output:
 Detecting CXX [-std=c++1y] compiler features compiled with the following output:
 Change Dir: /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec3744570954/fast"
-/usr/bin/make -f CMakeFiles/cmTryCompileExec3744570954.dir/build.make CMakeFiles/cmTryCompileExec3744570954.dir/build
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1993567000/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1993567000.dir/build.make CMakeFiles/cmTryCompileExec1993567000.dir/build
 make[1]: Entering directory `/home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp'
 /usr/bin/cmake -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec3744570954.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++1y -o CMakeFiles/cmTryCompileExec3744570954.dir/feature_tests.cxx.o -c /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTryCompileExec3744570954
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3744570954.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTryCompileExec3744570954.dir/feature_tests.cxx.o  -o cmTryCompileExec3744570954 -rdynamic 
+Building CXX object CMakeFiles/cmTryCompileExec1993567000.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++1y -o CMakeFiles/cmTryCompileExec1993567000.dir/feature_tests.cxx.o -c /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTryCompileExec1993567000
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1993567000.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTryCompileExec1993567000.dir/feature_tests.cxx.o  -o cmTryCompileExec1993567000 -rdynamic 
 make[1]: Leaving directory `/home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp'
 
 
@@ -403,15 +403,15 @@ make[1]: Leaving directory `/home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMa
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
 Change Dir: /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec2828678634/fast"
-/usr/bin/make -f CMakeFiles/cmTryCompileExec2828678634.dir/build.make CMakeFiles/cmTryCompileExec2828678634.dir/build
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1317647396/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1317647396.dir/build.make CMakeFiles/cmTryCompileExec1317647396.dir/build
 make[1]: Entering directory `/home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp'
 /usr/bin/cmake -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec2828678634.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++11 -o CMakeFiles/cmTryCompileExec2828678634.dir/feature_tests.cxx.o -c /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTryCompileExec2828678634
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2828678634.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTryCompileExec2828678634.dir/feature_tests.cxx.o  -o cmTryCompileExec2828678634 -rdynamic 
+Building CXX object CMakeFiles/cmTryCompileExec1317647396.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++11 -o CMakeFiles/cmTryCompileExec1317647396.dir/feature_tests.cxx.o -c /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTryCompileExec1317647396
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1317647396.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTryCompileExec1317647396.dir/feature_tests.cxx.o  -o cmTryCompileExec1317647396 -rdynamic 
 make[1]: Leaving directory `/home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp'
 
 
@@ -477,15 +477,15 @@ make[1]: Leaving directory `/home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMa
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
 Change Dir: /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec1673060168/fast"
-/usr/bin/make -f CMakeFiles/cmTryCompileExec1673060168.dir/build.make CMakeFiles/cmTryCompileExec1673060168.dir/build
+Run Build Command:"/usr/bin/make" "cmTryCompileExec247097849/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec247097849.dir/build.make CMakeFiles/cmTryCompileExec247097849.dir/build
 make[1]: Entering directory `/home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp'
 /usr/bin/cmake -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec1673060168.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++98 -o CMakeFiles/cmTryCompileExec1673060168.dir/feature_tests.cxx.o -c /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTryCompileExec1673060168
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1673060168.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTryCompileExec1673060168.dir/feature_tests.cxx.o  -o cmTryCompileExec1673060168 -rdynamic 
+Building CXX object CMakeFiles/cmTryCompileExec247097849.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++98 -o CMakeFiles/cmTryCompileExec247097849.dir/feature_tests.cxx.o -c /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTryCompileExec247097849
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec247097849.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTryCompileExec247097849.dir/feature_tests.cxx.o  -o cmTryCompileExec247097849 -rdynamic 
 make[1]: Leaving directory `/home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles/CMakeTmp'
 
 

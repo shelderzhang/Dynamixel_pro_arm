@@ -39,8 +39,8 @@ class WINDECLSPEC DynamixelController
 
 
  private:
-  PortHandler    *port_;
-  PacketHandler  *ph_;
+  PortHandler    *port_hd;
+  PacketHandler  *ph_hd;
   GroupSyncWrite *pos_write;
   GroupSyncWrite *vel_write;
   GroupSyncRead *pos_read;

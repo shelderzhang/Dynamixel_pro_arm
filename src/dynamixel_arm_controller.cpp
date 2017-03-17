@@ -14,8 +14,8 @@ using namespace dynamixel;
 
 DynamixelController::DynamixelController(PortHandler *port, PacketHandler *ph, GroupSyncWrite *pos_wr, GroupSyncWrite *vel_wr, GroupSyncRead *pos_rd, GroupSyncRead *vel_rd)
 {
-	  port_ = port;
-	  ph_ = ph;
+	  port_hd = port;
+	  ph_hd = ph;
 	  pos_write = pos_wr;
 	  vel_write = vel_wr;
 	  pos_read = pos_rd;
@@ -60,14 +60,14 @@ DynamixelController::DynamixelController(PortHandler *port, PacketHandler *ph, G
 int DynamixelController::torque_enable()
 {
 	  // Enable Dynamixel#1 Torque
-	  dxl_comm_result = ph_->write1ByteTxRx(port_, DXL1_ID, ADDR_PRO_TORQUE_ENABLE, TORQUE_ENABLE, &dxl_error);
+	  dxl_comm_result = ph_hd->write1ByteTxRx(port_hd, DXL1_ID, ADDR_PRO_TORQUE_ENABLE, TORQUE_ENABLE, &dxl_error);
 	  if (dxl_comm_result != COMM_SUCCESS)
 	  {
-	    ph_->printTxRxResult(dxl_comm_result);
+	    ph_hd->printTxRxResult(dxl_comm_result);
 	  }
 	  else if (dxl_error != 0)
 	  {
-	    ph_->printRxPacketError(dxl_error);
+	    ph_hd->printRxPacketError(dxl_error);
 	  }
 	  else
 	  {
@@ -75,14 +75,14 @@ int DynamixelController::torque_enable()
 	  }
 
 	  // Enable Dynamixel#2 Torque
-	  dxl_comm_result = ph_->write1ByteTxRx(port_, DXL2_ID, ADDR_PRO_TORQUE_ENABLE, TORQUE_ENABLE, &dxl_error);
+	  dxl_comm_result = ph_hd->write1ByteTxRx(port_hd, DXL2_ID, ADDR_PRO_TORQUE_ENABLE, TORQUE_ENABLE, &dxl_error);
 	  if (dxl_comm_result != COMM_SUCCESS)
 	  {
-	    ph_->printTxRxResult(dxl_comm_result);
+	    ph_hd->printTxRxResult(dxl_comm_result);
 	  }
 	  else if (dxl_error != 0)
 	  {
-	    ph_->printRxPacketError(dxl_error);
+	    ph_hd->printRxPacketError(dxl_error);
 	  }
 	  else
 	  {
@@ -158,7 +158,7 @@ int DynamixelController::set_position()
 
 	    // Syncwrite goal position
 	    dxl_comm_result = pos_write->txPacket();
-	    if (dxl_comm_result != COMM_SUCCESS) ph_->printTxRxResult(dxl_comm_result);
+	    if (dxl_comm_result != COMM_SUCCESS) ph_hd->printTxRxResult(dxl_comm_result);
 
 	    // Clear syncwrite parameter storage
 	    pos_write->clearParam();
@@ -195,7 +195,7 @@ int DynamixelController::set_velocity()
 
 		    // Syncwrite goal velocity
 		    dxl_comm_result = vel_write->txPacket();
-		    if (dxl_comm_result != COMM_SUCCESS) ph_->printTxRxResult(dxl_comm_result);
+		    if (dxl_comm_result != COMM_SUCCESS) ph_hd->printTxRxResult(dxl_comm_result);
 
 		    // Clear syncwrite parameter storage
 		    vel_write->clearParam();
@@ -206,7 +206,7 @@ int DynamixelController::get_position()
 {
 	// Syncread present position
 	      dxl_comm_result = pos_read->txRxPacket();
-	      if (dxl_comm_result != COMM_SUCCESS) ph_->printTxRxResult(dxl_comm_result);
+	      if (dxl_comm_result != COMM_SUCCESS) ph_hd->printTxRxResult(dxl_comm_result);
 
 	      // Check if posgroupSyncRead data of Dynamixel#1 is available
 	      dxl_getdata_result = pos_read->isAvailable(DXL1_ID, ADDR_PRO_PRESENT_POSITION, LEN_PRO_PRESENT_POSITION);
@@ -235,7 +235,7 @@ int DynamixelController::get_position()
 int DynamixelController::get_velocity()
 {
     dxl_comm_result = vel_read->txRxPacket();
-      if (dxl_comm_result != COMM_SUCCESS) ph_->printTxRxResult(dxl_comm_result);
+      if (dxl_comm_result != COMM_SUCCESS) ph_hd->printTxRxResult(dxl_comm_result);
       // Check if posgroupSyncRead data of Dynamixel#1 is available
       dxl_getdata_result = vel_read->isAvailable(DXL1_ID, ADDR_PRO_PRESENT_VELOCITY, LEN_PRO_PRESENT_VELOCITY);
       if (dxl_getdata_result != true)
@@ -262,25 +262,25 @@ int DynamixelController::get_velocity()
 int DynamixelController::torque_disable()
 {
 	  // Disable Dynamixel#1 Torque
-	  dxl_comm_result = ph_->write1ByteTxRx(port_, DXL1_ID, ADDR_PRO_TORQUE_ENABLE, TORQUE_DISABLE, &dxl_error);
+	  dxl_comm_result = ph_hd->write1ByteTxRx(port_hd, DXL1_ID, ADDR_PRO_TORQUE_ENABLE, TORQUE_DISABLE, &dxl_error);
 	  if (dxl_comm_result != COMM_SUCCESS)
 	  {
-	    ph_->printTxRxResult(dxl_comm_result);
+	    ph_hd->printTxRxResult(dxl_comm_result);
 	  }
 	  else if (dxl_error != 0)
 	  {
-	    ph_->printRxPacketError(dxl_error);
+	    ph_hd->printRxPacketError(dxl_error);
 	  }
 
 	  // Disable Dynamixel#2 Torque
-	  dxl_comm_result = ph_->write1ByteTxRx(port_, DXL2_ID, ADDR_PRO_TORQUE_ENABLE, TORQUE_DISABLE, &dxl_error);
+	  dxl_comm_result = ph_hd->write1ByteTxRx(port_hd, DXL2_ID, ADDR_PRO_TORQUE_ENABLE, TORQUE_DISABLE, &dxl_error);
 	  if (dxl_comm_result != COMM_SUCCESS)
 	  {
-	    ph_->printTxRxResult(dxl_comm_result);
+	    ph_hd->printTxRxResult(dxl_comm_result);
 	  }
 	  else if (dxl_error != 0)
 	  {
-	    ph_->printRxPacketError(dxl_error);
+	    ph_hd->printRxPacketError(dxl_error);
 	  }
 }
 
