@@ -18,7 +18,7 @@ namespace dynamixel
 class WINDECLSPEC DynamixelController
 {
 	 public:
-  DynamixelController(PortHandler *port, PacketHandler *ph, GroupSyncWrite *pos_wr, GroupSyncWrite *vel_wr, GroupSyncRead *pos_rd, GroupSyncRead *vel_rd);
+  DynamixelController(PortHandler *port, PacketHandler *ph, GroupSyncWrite *wr,  GroupSyncRead *rd);
   ~DynamixelController(){};
 
   int dxl1_pos;
@@ -30,21 +30,18 @@ class WINDECLSPEC DynamixelController
   int32_t dxl1_pre_vel;
   int32_t dxl2_pre_vel;
   int torque_enable();
-  int add_parameters();
-  int set_position();
-  int set_velocity();
-  int get_position();
-  int get_velocity();
+  int arm_initial();
+  int set_targets();
+  int get_status();
   int torque_disable();
 
 
  private:
   PortHandler    *port_hd;
   PacketHandler  *ph_hd;
-  GroupSyncWrite *pos_write;
-  GroupSyncWrite *vel_write;
-  GroupSyncRead *pos_read;
-  GroupSyncRead *vel_read;
+  GroupSyncWrite *group_write;
+  GroupSyncRead *group_read;
+
 
   int dxl_comm_result;             // Communication result
   bool dxl_addparam_result;                // addParam result
@@ -53,17 +50,11 @@ class WINDECLSPEC DynamixelController
 
   uint8_t dxl_error;                          // Dynamixel error
 
-  uint8_t dxl1_param_goal_position[4];
-  uint8_t dxl2_param_goal_position[4];
+  uint8_t dxl1_param_indirect_data_for_write[8];
+  uint8_t dxl2_param_indirect_data_for_write[8];
 
-  uint8_t dxl1_param_goal_velocity[4];
-  uint8_t dxl2_param_goal_velocity[4];
-
-  int32_t dxl1_present_position;
-  int32_t dxl2_present_position;              // Present position
-
-  int32_t dxl1_present_velocity;
-  int32_t dxl2_present_velocity;
+  uint16_t ADDR_PRO_INDIRECTADDRESS_FOR_WRITE;                       // EEPROM region
+  uint16_t ADDR_PRO_INDIRECTADDRESS_FOR_READ;                        // EEPROM region
 
   uint16_t ADDR_PRO_TORQUE_ENABLE;                 // Control table address is different in Dynamixel model
   uint16_t ADDR_PRO_GOAL_POSITION;
@@ -91,8 +82,8 @@ class WINDECLSPEC DynamixelController
   int DXL_MAXIMUM_POSITION_VALUE;             // and this value (note that the Dynamixel would not move when the position value is out of movable range. Check e-manual about the range of the Dynamixel you use.)
   int DXL_MOVING_STATUS_THRESHOLD;                  // Dynamixel moving status threshold
 
-
-
+  int indirectdata_parameter(int DXL_ID);
+  int add_parameters();
 
 };
 

@@ -21,20 +21,19 @@
 #include "../include/dynamixel_arm_controller.h"                             // Uses Dynamixel SDK library
 
 // Control table address
+// Control table address is different in Dynamixel model
+
+#define ADDR_PRO_INDIRECTDATA_FOR_WRITE         634
+#define ADDR_PRO_INDIRECTDATA_FOR_READ          639
+
+// Data Byte Length
+#define LEN_PRO_INDIRECTDATA_FOR_WRITE          8
+#define LEN_PRO_INDIRECTDATA_FOR_READ           8
 
 #define BAUDRATE                        115200
 #define DEVICENAME                      "/dev/ttyUSB0"      // Check which port is being used on your controller
-#define	ADDR_PRO_GOAL_POSITION 596
-#define	ADDR_PRO_GOAL_VELOCITY  600
-#define	ADDR_PRO_PRESENT_POSITION  611
-#define	ADDR_PRO_PRESENT_VELOCITY  615
 
 
-	    // Data Byte Length
-#define	LEN_PRO_GOAL_POSITION  4
-#define	LEN_PRO_GOAL_VELOCITY  4
-#define	LEN_PRO_PRESENT_POSITION  4
-#define	LEN_PRO_PRESENT_VELOCITY  4
                                                          // ex) Windows: "COM1"   Linux: "/dev/ttyUSB0"
 // Protocol version
 #define PROTOCOL_VERSION                2.0                 // See which protocol version is used in the Dynamixel
@@ -105,20 +104,19 @@ int main()
   // Get methods and members of Protocol1PacketHandler or Protocol2PacketHandler
   dynamixel::PacketHandler *packetHandler = dynamixel::PacketHandler::getPacketHandler(PROTOCOL_VERSION);
 
-  dynamixel::GroupSyncWrite posgroupSyncWrite(portHandler, packetHandler, ADDR_PRO_GOAL_POSITION, LEN_PRO_GOAL_POSITION);
+  // Initialize GroupSyncWrite instance
+   dynamixel::GroupSyncWrite groupSyncWrite(portHandler, packetHandler, ADDR_PRO_INDIRECTDATA_FOR_WRITE, LEN_PRO_INDIRECTDATA_FOR_WRITE);
 
-  dynamixel::GroupSyncWrite velgroupSyncWrite(portHandler, packetHandler, ADDR_PRO_GOAL_VELOCITY, LEN_PRO_GOAL_VELOCITY);
+   // Initialize Groupsyncread instance
+   dynamixel::GroupSyncRead groupSyncRead(portHandler, packetHandler, ADDR_PRO_INDIRECTDATA_FOR_READ, LEN_PRO_INDIRECTDATA_FOR_READ);
 
-  // Initialize Groupsyncread instance for Present Position
-  dynamixel::GroupSyncRead posgroupSyncRead(portHandler, packetHandler, ADDR_PRO_PRESENT_POSITION, LEN_PRO_PRESENT_POSITION);
-  dynamixel::GroupSyncRead velgroupSyncRead(portHandler, packetHandler, ADDR_PRO_PRESENT_VELOCITY, LEN_PRO_PRESENT_VELOCITY);
-
-  dynamixel::DynamixelController dynamixelController(portHandler, packetHandler, &posgroupSyncWrite, &velgroupSyncWrite, &posgroupSyncRead, &velgroupSyncRead);
+  dynamixel::DynamixelController dynamixelController(portHandler, packetHandler, &groupSyncWrite, &groupSyncRead);
 
   int index = 0;
   int dxl1_goal_position[2] = {-13000, 13000};
   int dxl2_goal_position[2] = {-52000, 52000}; // Goal position
-
+  int dxl1_goal_velocity[2] = {-1000, 1000};
+  int dxl2_goal_velocity[2] = {-500, 500}; // Goal position
 
   int32_t dxl1_present_position = 0, dxl2_present_position = 0;              // Present position
   int32_t dxl1_present_velocity = 0, dxl2_present_velocity = 0;
@@ -149,11 +147,10 @@ int main()
     return 0;
   }
 
-  // Enable Dynamixel#1 Torque
-  dynamixelController.torque_enable();
+
 
   // Add parameter storage for Dynamixel#1 present position value
-  dynamixelController.add_parameters();
+  dynamixelController.arm_initial();
 
 
   while(1)
@@ -164,13 +161,14 @@ int main()
     // set pos and vel
     dynamixelController.dxl1_pos = dxl1_goal_position[index];
     dynamixelController.dxl2_pos = dxl2_goal_position[index];
-    dynamixelController.set_position();
-    printf("Succeeded to set position!\n");
+    dynamixelController.dxl1_vel = dxl1_goal_velocity[index];
+    dynamixelController.dxl2_vel = dxl2_goal_velocity[index];
+    dynamixelController.set_targets();
+
     do
     {
    	//get pos and vel
-    	dynamixelController.get_position();
-    	dynamixelController.get_velocity();
+    	dynamixelController.get_status();
     	dxl1_present_position = dynamixelController.dxl1_pre_pos;
 		dxl2_present_position = dynamixelController.dxl2_pre_pos;
     	dxl1_present_velocity = dynamixelController.dxl1_pre_vel;
