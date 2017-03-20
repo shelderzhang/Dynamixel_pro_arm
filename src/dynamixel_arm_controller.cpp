@@ -106,7 +106,7 @@ int DynamixelController::indirectdata_parameter(int DXL_ID)
 {
 	int i;
 	// INDIRECTDATA parameter storages replace LED, goal position, present position and moving status storages
-	for (i = 0; i<=4;i++ )
+	for (i = 0; i<4;i++ )
 	{
 		dxl_comm_result = ph_hd->write2ByteTxRx(port_hd, DXL_ID, (ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 2*i), (ADDR_PRO_GOAL_POSITION + i), &dxl_error);
 		if (dxl_comm_result != COMM_SUCCESS)
@@ -119,7 +119,7 @@ int DynamixelController::indirectdata_parameter(int DXL_ID)
 	    }
 
 	}
-	for (i = 0; i<=4;i++ )
+	for (i = 0; i<4;i++ )
 	{
 		dxl_comm_result = ph_hd->write2ByteTxRx(port_hd, DXL_ID, (ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 8+2*i), (ADDR_PRO_GOAL_VELOCITY + i), &dxl_error);
 		if (dxl_comm_result != COMM_SUCCESS)
@@ -133,7 +133,7 @@ int DynamixelController::indirectdata_parameter(int DXL_ID)
 
 	}
 
-	for (i = 0; i<=4;i++ )
+	for (i = 0; i<4;i++ )
 	{
 		dxl_comm_result = ph_hd->write2ByteTxRx(port_hd, DXL_ID, (ADDR_PRO_INDIRECTADDRESS_FOR_READ+ 2*i), (ADDR_PRO_PRESENT_POSITION + i), &dxl_error);
 		if (dxl_comm_result != COMM_SUCCESS)
@@ -146,7 +146,7 @@ int DynamixelController::indirectdata_parameter(int DXL_ID)
 	    }
 
 	}
-	for (i = 0; i<=4;i++ )
+	for (i = 0; i<4;i++ )
 	{
 		dxl_comm_result = ph_hd->write2ByteTxRx(port_hd, DXL_ID, (ADDR_PRO_INDIRECTADDRESS_FOR_READ + 8+2*i), (ADDR_PRO_PRESENT_VELOCITY + i), &dxl_error);
 		if (dxl_comm_result != COMM_SUCCESS)
