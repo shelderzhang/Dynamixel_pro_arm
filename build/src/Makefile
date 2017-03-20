@@ -139,30 +139,6 @@ dynamixel_arm_controller.cpp.s:
 	cd /home/gyz/src/Dynamixel_pro_arm/build && $(MAKE) -f src/CMakeFiles/dynamixel_arm.dir/build.make src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_controller.cpp.s
 .PHONY : dynamixel_arm_controller.cpp.s
 
-dynamixel_arm_main.o: dynamixel_arm_main.cpp.o
-.PHONY : dynamixel_arm_main.o
-
-# target to build an object file
-dynamixel_arm_main.cpp.o:
-	cd /home/gyz/src/Dynamixel_pro_arm/build && $(MAKE) -f src/CMakeFiles/dynamixel_arm.dir/build.make src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o
-.PHONY : dynamixel_arm_main.cpp.o
-
-dynamixel_arm_main.i: dynamixel_arm_main.cpp.i
-.PHONY : dynamixel_arm_main.i
-
-# target to preprocess a source file
-dynamixel_arm_main.cpp.i:
-	cd /home/gyz/src/Dynamixel_pro_arm/build && $(MAKE) -f src/CMakeFiles/dynamixel_arm.dir/build.make src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.i
-.PHONY : dynamixel_arm_main.cpp.i
-
-dynamixel_arm_main.s: dynamixel_arm_main.cpp.s
-.PHONY : dynamixel_arm_main.s
-
-# target to generate assembly for a file
-dynamixel_arm_main.cpp.s:
-	cd /home/gyz/src/Dynamixel_pro_arm/build && $(MAKE) -f src/CMakeFiles/dynamixel_arm.dir/build.make src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.s
-.PHONY : dynamixel_arm_main.cpp.s
-
 group_bulk_read.o: group_bulk_read.cpp.o
 .PHONY : group_bulk_read.o
 
@@ -258,6 +234,30 @@ group_sync_write.s: group_sync_write.cpp.s
 group_sync_write.cpp.s:
 	cd /home/gyz/src/Dynamixel_pro_arm/build && $(MAKE) -f src/CMakeFiles/dynamixel_arm.dir/build.make src/CMakeFiles/dynamixel_arm.dir/group_sync_write.cpp.s
 .PHONY : group_sync_write.cpp.s
+
+indirect_address.o: indirect_address.cpp.o
+.PHONY : indirect_address.o
+
+# target to build an object file
+indirect_address.cpp.o:
+	cd /home/gyz/src/Dynamixel_pro_arm/build && $(MAKE) -f src/CMakeFiles/dynamixel_arm.dir/build.make src/CMakeFiles/dynamixel_arm.dir/indirect_address.cpp.o
+.PHONY : indirect_address.cpp.o
+
+indirect_address.i: indirect_address.cpp.i
+.PHONY : indirect_address.i
+
+# target to preprocess a source file
+indirect_address.cpp.i:
+	cd /home/gyz/src/Dynamixel_pro_arm/build && $(MAKE) -f src/CMakeFiles/dynamixel_arm.dir/build.make src/CMakeFiles/dynamixel_arm.dir/indirect_address.cpp.i
+.PHONY : indirect_address.cpp.i
+
+indirect_address.s: indirect_address.cpp.s
+.PHONY : indirect_address.s
+
+# target to generate assembly for a file
+indirect_address.cpp.s:
+	cd /home/gyz/src/Dynamixel_pro_arm/build && $(MAKE) -f src/CMakeFiles/dynamixel_arm.dir/build.make src/CMakeFiles/dynamixel_arm.dir/indirect_address.cpp.s
+.PHONY : indirect_address.cpp.s
 
 packet_handler.o: packet_handler.cpp.o
 .PHONY : packet_handler.o
@@ -391,9 +391,6 @@ help:
 	@echo "... dynamixel_arm_controller.o"
 	@echo "... dynamixel_arm_controller.i"
 	@echo "... dynamixel_arm_controller.s"
-	@echo "... dynamixel_arm_main.o"
-	@echo "... dynamixel_arm_main.i"
-	@echo "... dynamixel_arm_main.s"
 	@echo "... group_bulk_read.o"
 	@echo "... group_bulk_read.i"
 	@echo "... group_bulk_read.s"
@@ -406,6 +403,9 @@ help:
 	@echo "... group_sync_write.o"
 	@echo "... group_sync_write.i"
 	@echo "... group_sync_write.s"
+	@echo "... indirect_address.o"
+	@echo "... indirect_address.i"
+	@echo "... indirect_address.s"
 	@echo "... packet_handler.o"
 	@echo "... packet_handler.i"
 	@echo "... packet_handler.s"

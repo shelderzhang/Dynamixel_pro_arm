@@ -15,20 +15,6 @@ src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_controller.cpp.o
  /home/gyz/src/Dynamixel_pro_arm/include/dynamixel_sdk_linux/port_handler_linux.h
  /home/gyz/src/Dynamixel_pro_arm/include/dynamixel_sdk_windows/port_handler_windows.h
  /home/gyz/src/Dynamixel_pro_arm/src/dynamixel_arm_controller.cpp
-src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o
- /home/gyz/src/Dynamixel_pro_arm/include/dynamixel_arm_controller.h
- /home/gyz/src/Dynamixel_pro_arm/include/dynamixel_sdk.h
- /home/gyz/src/Dynamixel_pro_arm/include/dynamixel_sdk/group_bulk_read.h
- /home/gyz/src/Dynamixel_pro_arm/include/dynamixel_sdk/group_bulk_write.h
- /home/gyz/src/Dynamixel_pro_arm/include/dynamixel_sdk/group_sync_read.h
- /home/gyz/src/Dynamixel_pro_arm/include/dynamixel_sdk/group_sync_write.h
- /home/gyz/src/Dynamixel_pro_arm/include/dynamixel_sdk/packet_handler.h
- /home/gyz/src/Dynamixel_pro_arm/include/dynamixel_sdk/port_handler.h
- /home/gyz/src/Dynamixel_pro_arm/include/dynamixel_sdk/protocol1_packet_handler.h
- /home/gyz/src/Dynamixel_pro_arm/include/dynamixel_sdk/protocol2_packet_handler.h
- /home/gyz/src/Dynamixel_pro_arm/include/dynamixel_sdk_linux/port_handler_linux.h
- /home/gyz/src/Dynamixel_pro_arm/include/dynamixel_sdk_windows/port_handler_windows.h
- /home/gyz/src/Dynamixel_pro_arm/src/dynamixel_arm_main.cpp
 src/CMakeFiles/dynamixel_arm.dir/group_bulk_read.cpp.o
  /home/gyz/src/Dynamixel_pro_arm/src/group_bulk_read.cpp
 src/CMakeFiles/dynamixel_arm.dir/group_bulk_write.cpp.o
@@ -37,6 +23,8 @@ src/CMakeFiles/dynamixel_arm.dir/group_sync_read.cpp.o
  /home/gyz/src/Dynamixel_pro_arm/src/group_sync_read.cpp
 src/CMakeFiles/dynamixel_arm.dir/group_sync_write.cpp.o
  /home/gyz/src/Dynamixel_pro_arm/src/group_sync_write.cpp
+src/CMakeFiles/dynamixel_arm.dir/indirect_address.cpp.o
+ /home/gyz/src/Dynamixel_pro_arm/src/indirect_address.cpp
 src/CMakeFiles/dynamixel_arm.dir/packet_handler.cpp.o
  /home/gyz/src/Dynamixel_pro_arm/src/packet_handler.cpp
 src/CMakeFiles/dynamixel_arm.dir/port_handler.cpp.o

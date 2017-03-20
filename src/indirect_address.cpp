@@ -55,7 +55,7 @@
 // Control table address
 // Control table address is different in Dynamixel model
 #define ADDR_PRO_INDIRECTADDRESS_FOR_WRITE      49                  // EEPROM region
-#define ADDR_PRO_INDIRECTADDRESS_FOR_READ       59                  // EEPROM region
+#define ADDR_PRO_INDIRECTADDRESS_FOR_READ       65                  // EEPROM region
 #define ADDR_PRO_TORQUE_ENABLE                  562
 #define ADDR_PRO_LED_RED                        563
 #define ADDR_PRO_GOAL_POSITION                  596
@@ -64,7 +64,7 @@
 #define ADDR_PRO_PRESENT_POSITION               611
 #define ADDR_PRO_PRESENT_VELOCITY               615
 #define ADDR_PRO_INDIRECTDATA_FOR_WRITE         634
-#define ADDR_PRO_INDIRECTDATA_FOR_READ          639
+#define ADDR_PRO_INDIRECTDATA_FOR_READ          642
 
 // Data Byte Length
 #define LEN_PRO_LED_RED                         1
@@ -73,7 +73,7 @@
 #define LEN_PRO_MOVING                          1
 #define LEN_PRO_PRESENT_POSITION                4
 #define LEN_PRO_PRESENT_VELOCITY				4
-#define LEN_PRO_INDIRECTDATA_FOR_WRITE          5
+#define LEN_PRO_INDIRECTDATA_FOR_WRITE          8
 #define LEN_PRO_INDIRECTDATA_FOR_READ           8
 
 // Protocol version
@@ -87,8 +87,8 @@
 
 #define TORQUE_ENABLE                           1                   // Value for enabling the torque
 #define TORQUE_DISABLE                          0                   // Value for disabling the torque
-#define DXL_MINIMUM_POSITION_VALUE              -100000             // Dynamixel will rotate between this value
-#define DXL_MAXIMUM_POSITION_VALUE              100000              // and this value (note that the Dynamixel would not move when the position value is out of movable range. Check e-manual about the range of the Dynamixel you use.)
+#define DXL_MINIMUM_POSITION_VALUE              -90000             // Dynamixel will rotate between this value
+#define DXL_MAXIMUM_POSITION_VALUE              90000              // and this value (note that the Dynamixel would not move when the position value is out of movable range. Check e-manual about the range of the Dynamixel you use.)
 #define DXL_MINIMUM_LED_VALUE                   0                   // Dynamixel LED will light between this value
 #define DXL_MAXIMUM_LED_VALUE                   255                 // and this value
 #define DXL_MOVING_STATUS_THRESHOLD             20                  // Dynamixel moving status threshold
@@ -166,6 +166,7 @@ int main()
   bool dxl_addparam_result = false;               // addParam result
   bool dxl_getdata_result = false;                // GetParam result
   int dxl_goal_position[2] = {DXL_MINIMUM_POSITION_VALUE, DXL_MAXIMUM_POSITION_VALUE};         // Goal position
+  int dxl_goal_velocity[2] = {-200, 200};
 
   uint8_t dxl_error = 0;                          // Dynamixel error
   uint8_t dxl_moving = 0;                         // Dynamixel moving status
@@ -256,7 +257,45 @@ int main()
     packetHandler->printRxPacketError(dxl_error);
   }
 
-  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 8, ADDR_PRO_LED_RED, &dxl_error);
+//  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 8, ADDR_PRO_LED_RED, &dxl_error);
+//  if (dxl_comm_result != COMM_SUCCESS)
+//  {
+//    packetHandler->printTxRxResult(dxl_comm_result);
+//  }
+//  else if (dxl_error != 0)
+//  {
+//    packetHandler->printRxPacketError(dxl_error);
+//  }
+
+  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 8, ADDR_PRO_PRESENT_VELOCITY + 0, &dxl_error);
+  if (dxl_comm_result != COMM_SUCCESS)
+  {
+    packetHandler->printTxRxResult(dxl_comm_result);
+  }
+  else if (dxl_error != 0)
+  {
+    packetHandler->printRxPacketError(dxl_error);
+  }
+
+  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 10, ADDR_PRO_PRESENT_VELOCITY + 1, &dxl_error);
+  if (dxl_comm_result != COMM_SUCCESS)
+  {
+    packetHandler->printTxRxResult(dxl_comm_result);
+  }
+  else if (dxl_error != 0)
+  {
+    packetHandler->printRxPacketError(dxl_error);
+  }
+  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 12, ADDR_PRO_PRESENT_VELOCITY + 2, &dxl_error);
+  if (dxl_comm_result != COMM_SUCCESS)
+  {
+    packetHandler->printTxRxResult(dxl_comm_result);
+  }
+  else if (dxl_error != 0)
+  {
+    packetHandler->printRxPacketError(dxl_error);
+  }
+  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 14, ADDR_PRO_PRESENT_VELOCITY + 3, &dxl_error);
   if (dxl_comm_result != COMM_SUCCESS)
   {
     packetHandler->printTxRxResult(dxl_comm_result);
@@ -373,8 +412,11 @@ int main()
     param_indirect_data_for_write[1] = DXL_HIBYTE(DXL_LOWORD(dxl_goal_position[index]));
     param_indirect_data_for_write[2] = DXL_LOBYTE(DXL_HIWORD(dxl_goal_position[index]));
     param_indirect_data_for_write[3] = DXL_HIBYTE(DXL_HIWORD(dxl_goal_position[index]));
-    param_indirect_data_for_write[4] = dxl_led_value[index];
-
+//    param_indirect_data_for_write[4] = dxl_led_value[index];
+    param_indirect_data_for_write[4] = DXL_LOBYTE(DXL_LOWORD(dxl_goal_velocity[index]));
+    param_indirect_data_for_write[5] = DXL_HIBYTE(DXL_LOWORD(dxl_goal_velocity[index]));
+    param_indirect_data_for_write[6] = DXL_LOBYTE(DXL_HIWORD(dxl_goal_velocity[index]));
+    param_indirect_data_for_write[7] = DXL_HIBYTE(DXL_HIWORD(dxl_goal_velocity[index]));
     // Add values to the Syncwrite storage
     dxl_addparam_result = groupSyncWrite.addParam(DXL_ID, param_indirect_data_for_write);
     if (dxl_addparam_result != true)

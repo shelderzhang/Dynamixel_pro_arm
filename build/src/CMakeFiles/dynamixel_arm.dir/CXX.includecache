@@ -104,22 +104,6 @@ algorithm
 ../include/dynamixel_arm_controller.h
 /home/gyz/src/Dynamixel_pro_arm/include/dynamixel_arm_controller.h
 
-/home/gyz/src/Dynamixel_pro_arm/src/dynamixel_arm_main.cpp
-unistd.h
--
-fcntl.h
--
-termios.h
--
-conio.h
--
-stdlib.h
--
-stdio.h
--
-../include/dynamixel_arm_controller.h
-/home/gyz/src/Dynamixel_pro_arm/include/dynamixel_arm_controller.h
-
 /home/gyz/src/Dynamixel_pro_arm/src/group_bulk_read.cpp
 stdio.h
 -
@@ -145,6 +129,22 @@ algorithm
 -
 dynamixel_sdk/group_sync_write.h
 /home/gyz/src/Dynamixel_pro_arm/src/dynamixel_sdk/group_sync_write.h
+
+/home/gyz/src/Dynamixel_pro_arm/src/indirect_address.cpp
+unistd.h
+-
+fcntl.h
+-
+termios.h
+-
+conio.h
+-
+stdlib.h
+-
+stdio.h
+-
+dynamixel_sdk.h
+/home/gyz/src/Dynamixel_pro_arm/src/dynamixel_sdk.h
 
 /home/gyz/src/Dynamixel_pro_arm/src/packet_handler.cpp
 dynamixel_sdk/packet_handler.h

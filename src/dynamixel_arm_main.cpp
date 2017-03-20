@@ -24,7 +24,7 @@
 // Control table address is different in Dynamixel model
 
 #define ADDR_PRO_INDIRECTDATA_FOR_WRITE         634
-#define ADDR_PRO_INDIRECTDATA_FOR_READ          639
+#define ADDR_PRO_INDIRECTDATA_FOR_READ          642
 
 // Data Byte Length
 #define LEN_PRO_INDIRECTDATA_FOR_WRITE          8
