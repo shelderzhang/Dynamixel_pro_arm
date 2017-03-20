@@ -87,8 +87,8 @@
 
 #define TORQUE_ENABLE                           1                   // Value for enabling the torque
 #define TORQUE_DISABLE                          0                   // Value for disabling the torque
-#define DXL_MINIMUM_POSITION_VALUE              -90000             // Dynamixel will rotate between this value
-#define DXL_MAXIMUM_POSITION_VALUE              90000              // and this value (note that the Dynamixel would not move when the position value is out of movable range. Check e-manual about the range of the Dynamixel you use.)
+#define DXL_MINIMUM_POSITION_VALUE              -11000             // Dynamixel will rotate between this value
+#define DXL_MAXIMUM_POSITION_VALUE              11000              // and this value (note that the Dynamixel would not move when the position value is out of movable range. Check e-manual about the range of the Dynamixel you use.)
 #define DXL_MINIMUM_LED_VALUE                   0                   // Dynamixel LED will light between this value
 #define DXL_MAXIMUM_LED_VALUE                   255                 // and this value
 #define DXL_MOVING_STATUS_THRESHOLD             20                  // Dynamixel moving status threshold
@@ -267,7 +267,7 @@ int main()
 //    packetHandler->printRxPacketError(dxl_error);
 //  }
 
-  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 8, ADDR_PRO_PRESENT_VELOCITY + 0, &dxl_error);
+  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 8, ADDR_PRO_GOAL_VELOCITY + 0, &dxl_error);
   if (dxl_comm_result != COMM_SUCCESS)
   {
     packetHandler->printTxRxResult(dxl_comm_result);
@@ -277,7 +277,7 @@ int main()
     packetHandler->printRxPacketError(dxl_error);
   }
 
-  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 10, ADDR_PRO_PRESENT_VELOCITY + 1, &dxl_error);
+  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 10, ADDR_PRO_GOAL_VELOCITY + 1, &dxl_error);
   if (dxl_comm_result != COMM_SUCCESS)
   {
     packetHandler->printTxRxResult(dxl_comm_result);
@@ -286,7 +286,7 @@ int main()
   {
     packetHandler->printRxPacketError(dxl_error);
   }
-  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 12, ADDR_PRO_PRESENT_VELOCITY + 2, &dxl_error);
+  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 12, ADDR_PRO_GOAL_VELOCITY + 2, &dxl_error);
   if (dxl_comm_result != COMM_SUCCESS)
   {
     packetHandler->printTxRxResult(dxl_comm_result);
@@ -295,7 +295,7 @@ int main()
   {
     packetHandler->printRxPacketError(dxl_error);
   }
-  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 14, ADDR_PRO_PRESENT_VELOCITY + 3, &dxl_error);
+  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 14, ADDR_PRO_GOAL_VELOCITY + 3, &dxl_error);
   if (dxl_comm_result != COMM_SUCCESS)
   {
     packetHandler->printTxRxResult(dxl_comm_result);
@@ -304,7 +304,7 @@ int main()
   {
     packetHandler->printRxPacketError(dxl_error);
   }
-
+  fprintf(stderr, "[DDR_PRO_INDIRECTADDRESS_FOR_WRITE:%03d] \n", ADDR_PRO_INDIRECTADDRESS_FOR_WRITE+16);
   dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_READ + 0, ADDR_PRO_PRESENT_POSITION + 0, &dxl_error);
   if (dxl_comm_result != COMM_SUCCESS)
   {

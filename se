@@ -1,0 +1,45 @@
+[33mcommit 56a76e8250be465d794415149ab2e52758ba59ef[m
+Author: gyzhang <zhangguangyu@sia.cn>
+Date:   Mon Mar 20 16:04:38 2017 +0800
+
+    add write VEL doesn't work
+    Signed-off-by: gyzhang <zhangguangyu@sia.cn>
+
+[33mcommit eb45af0e59411fcf4891d39d5bff5decb46d6d6c[m
+Author: gyzhang <zhangguangyu@sia.cn>
+Date:   Mon Mar 20 15:06:07 2017 +0800
+
+    indirect_address can read POS and VEl simultaneous
+    
+    Signed-off-by: gyzhang <zhangguangyu@sia.cn>
+
+[33mcommit de345afeb038c3457df1f6f0fcaca2153fdbbdd1[m
+Author: gyzhang <zhangguangyu@sia.cn>
+Date:   Sat Mar 18 16:57:37 2017 +0800
+
+    Signed-off-by: gyzhang <zhangguangyu@sia.cn>
+
+[33mcommit a3ce94f3668ec148dba476fff95d355798d0fb81[m
+Author: gyzhang <zhangguangyu@sia.cn>
+Date:   Fri Mar 17 14:44:27 2017 +0800
+
+    Signed-off-by: gyzhang <zhangguangyu@sia.cn>
+
+[33mcommit 1ccb4d66280b4c9e61ff274fa4967f6f27df8edc[m
+Author: gyzhang <zhangguangyu@sia.cn>
+Date:   Fri Mar 17 13:10:41 2017 +0800
+
+    use Syncwrite and Syncread to control a Dynamixel por arm
+    Signed-off-by: gyzhang <zhangguangyu@sia.cn>
+
+[33mcommit 7c58c195b2c5c91b94a0f78e2ed992787aeaea73[m
+Author: gyzhang <zhangguangyu@sia.cn>
+Date:   Fri Mar 17 13:05:10 2017 +0800
+
+    Signed-off-by: gyzhang <zhangguangyu@sia.cn>
+
+[33mcommit a3d75b03ef86ef25dfde3ae4752e67e9d146d0c3[m
+Author: gyzhang <zhangguangyu@sia.cn>
+Date:   Fri Mar 17 13:02:40 2017 +0800
+
+    Signed-off-by: gyzhang <zhangguangyu@sia.cn>
