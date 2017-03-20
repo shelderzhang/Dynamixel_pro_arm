@@ -49,28 +49,28 @@ include src/CMakeFiles/dynamixel_arm.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/CMakeFiles/dynamixel_arm.dir/flags.make
 
-src/CMakeFiles/dynamixel_arm.dir/indirect_address.cpp.o: src/CMakeFiles/dynamixel_arm.dir/flags.make
-src/CMakeFiles/dynamixel_arm.dir/indirect_address.cpp.o: ../src/indirect_address.cpp
+src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o: src/CMakeFiles/dynamixel_arm.dir/flags.make
+src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o: ../src/dynamixel_arm_main.cpp
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles $(CMAKE_PROGRESS_1)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/dynamixel_arm.dir/indirect_address.cpp.o"
-	cd /home/gyz/src/Dynamixel_pro_arm/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/dynamixel_arm.dir/indirect_address.cpp.o -c /home/gyz/src/Dynamixel_pro_arm/src/indirect_address.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o"
+	cd /home/gyz/src/Dynamixel_pro_arm/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o -c /home/gyz/src/Dynamixel_pro_arm/src/dynamixel_arm_main.cpp
 
-src/CMakeFiles/dynamixel_arm.dir/indirect_address.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dynamixel_arm.dir/indirect_address.cpp.i"
-	cd /home/gyz/src/Dynamixel_pro_arm/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/gyz/src/Dynamixel_pro_arm/src/indirect_address.cpp > CMakeFiles/dynamixel_arm.dir/indirect_address.cpp.i
+src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.i"
+	cd /home/gyz/src/Dynamixel_pro_arm/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/gyz/src/Dynamixel_pro_arm/src/dynamixel_arm_main.cpp > CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.i
 
-src/CMakeFiles/dynamixel_arm.dir/indirect_address.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dynamixel_arm.dir/indirect_address.cpp.s"
-	cd /home/gyz/src/Dynamixel_pro_arm/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/gyz/src/Dynamixel_pro_arm/src/indirect_address.cpp -o CMakeFiles/dynamixel_arm.dir/indirect_address.cpp.s
+src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.s"
+	cd /home/gyz/src/Dynamixel_pro_arm/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/gyz/src/Dynamixel_pro_arm/src/dynamixel_arm_main.cpp -o CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.s
 
-src/CMakeFiles/dynamixel_arm.dir/indirect_address.cpp.o.requires:
-.PHONY : src/CMakeFiles/dynamixel_arm.dir/indirect_address.cpp.o.requires
+src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o.requires:
+.PHONY : src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o.requires
 
-src/CMakeFiles/dynamixel_arm.dir/indirect_address.cpp.o.provides: src/CMakeFiles/dynamixel_arm.dir/indirect_address.cpp.o.requires
-	$(MAKE) -f src/CMakeFiles/dynamixel_arm.dir/build.make src/CMakeFiles/dynamixel_arm.dir/indirect_address.cpp.o.provides.build
-.PHONY : src/CMakeFiles/dynamixel_arm.dir/indirect_address.cpp.o.provides
+src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o.provides: src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/dynamixel_arm.dir/build.make src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o.provides.build
+.PHONY : src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o.provides
 
-src/CMakeFiles/dynamixel_arm.dir/indirect_address.cpp.o.provides.build: src/CMakeFiles/dynamixel_arm.dir/indirect_address.cpp.o
+src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o.provides.build: src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o
 
 src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_controller.cpp.o: src/CMakeFiles/dynamixel_arm.dir/flags.make
 src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_controller.cpp.o: ../src/dynamixel_arm_controller.cpp
@@ -304,7 +304,7 @@ src/CMakeFiles/dynamixel_arm.dir/protocol2_packet_handler.cpp.o.provides.build: 
 
 # Object files for target dynamixel_arm
 dynamixel_arm_OBJECTS = \
-"CMakeFiles/dynamixel_arm.dir/indirect_address.cpp.o" \
+"CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o" \
 "CMakeFiles/dynamixel_arm.dir/dynamixel_arm_controller.cpp.o" \
 "CMakeFiles/dynamixel_arm.dir/group_bulk_read.cpp.o" \
 "CMakeFiles/dynamixel_arm.dir/group_bulk_write.cpp.o" \
@@ -319,7 +319,7 @@ dynamixel_arm_OBJECTS = \
 # External object files for target dynamixel_arm
 dynamixel_arm_EXTERNAL_OBJECTS =
 
-src/bin/dynamixel_arm: src/CMakeFiles/dynamixel_arm.dir/indirect_address.cpp.o
+src/bin/dynamixel_arm: src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o
 src/bin/dynamixel_arm: src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_controller.cpp.o
 src/bin/dynamixel_arm: src/CMakeFiles/dynamixel_arm.dir/group_bulk_read.cpp.o
 src/bin/dynamixel_arm: src/CMakeFiles/dynamixel_arm.dir/group_bulk_write.cpp.o
@@ -339,7 +339,7 @@ src/bin/dynamixel_arm: src/CMakeFiles/dynamixel_arm.dir/link.txt
 src/CMakeFiles/dynamixel_arm.dir/build: src/bin/dynamixel_arm
 .PHONY : src/CMakeFiles/dynamixel_arm.dir/build
 
-src/CMakeFiles/dynamixel_arm.dir/requires: src/CMakeFiles/dynamixel_arm.dir/indirect_address.cpp.o.requires
+src/CMakeFiles/dynamixel_arm.dir/requires: src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o.requires
 src/CMakeFiles/dynamixel_arm.dir/requires: src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_controller.cpp.o.requires
 src/CMakeFiles/dynamixel_arm.dir/requires: src/CMakeFiles/dynamixel_arm.dir/group_bulk_read.cpp.o.requires
 src/CMakeFiles/dynamixel_arm.dir/requires: src/CMakeFiles/dynamixel_arm.dir/group_bulk_write.cpp.o.requires

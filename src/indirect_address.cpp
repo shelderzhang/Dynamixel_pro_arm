@@ -217,171 +217,61 @@ int main()
   }
 
   // INDIRECTDATA parameter storages replace LED, goal position, present position and moving status storages
-  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 0, ADDR_PRO_GOAL_POSITION + 0, &dxl_error);
-  if (dxl_comm_result != COMM_SUCCESS)
-  {
-    packetHandler->printTxRxResult(dxl_comm_result);
-  }
-  else if (dxl_error != 0)
-  {
-    packetHandler->printRxPacketError(dxl_error);
-  }
 
-  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 2, ADDR_PRO_GOAL_POSITION + 1, &dxl_error);
-  if (dxl_comm_result != COMM_SUCCESS)
-  {
-    packetHandler->printTxRxResult(dxl_comm_result);
-  }
-  else if (dxl_error != 0)
-  {
-    packetHandler->printRxPacketError(dxl_error);
-  }
+	int i;
+	for (i = 0; i<4;i++ )
+	{
+		dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, (ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 2*i), (ADDR_PRO_GOAL_POSITION + i), &dxl_error);
+		if (dxl_comm_result != COMM_SUCCESS)
+		{
+		    packetHandler->printTxRxResult(dxl_comm_result);
+		}
+	    else if (dxl_error != 0)
+		{
+			 packetHandler->printRxPacketError(dxl_error);
+	    }
 
-  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 4, ADDR_PRO_GOAL_POSITION + 2, &dxl_error);
-  if (dxl_comm_result != COMM_SUCCESS)
-  {
-    packetHandler->printTxRxResult(dxl_comm_result);
-  }
-  else if (dxl_error != 0)
-  {
-    packetHandler->printRxPacketError(dxl_error);
-  }
+	}
+	for (i = 0; i<4;i++ )
+	{
+		dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, (ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 8+2*i), (ADDR_PRO_GOAL_VELOCITY + i), &dxl_error);
+		if (dxl_comm_result != COMM_SUCCESS)
+		{
+		    packetHandler->printTxRxResult(dxl_comm_result);
+		}
+	    else if (dxl_error != 0)
+		{
+			 packetHandler->printRxPacketError(dxl_error);
+	    }
 
-  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 6, ADDR_PRO_GOAL_POSITION + 3, &dxl_error);
-  if (dxl_comm_result != COMM_SUCCESS)
-  {
-    packetHandler->printTxRxResult(dxl_comm_result);
-  }
-  else if (dxl_error != 0)
-  {
-    packetHandler->printRxPacketError(dxl_error);
-  }
+	}
 
-//  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 8, ADDR_PRO_LED_RED, &dxl_error);
-//  if (dxl_comm_result != COMM_SUCCESS)
-//  {
-//    packetHandler->printTxRxResult(dxl_comm_result);
-//  }
-//  else if (dxl_error != 0)
-//  {
-//    packetHandler->printRxPacketError(dxl_error);
-//  }
+	for (i = 0; i<4;i++ )
+	{
+		dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, (ADDR_PRO_INDIRECTADDRESS_FOR_READ+ 2*i), (ADDR_PRO_PRESENT_POSITION + i), &dxl_error);
+		if (dxl_comm_result != COMM_SUCCESS)
+		{
+		    packetHandler->printTxRxResult(dxl_comm_result);
+		}
+	    else if (dxl_error != 0)
+		{
+			 packetHandler->printRxPacketError(dxl_error);
+	    }
 
-  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 8, ADDR_PRO_GOAL_VELOCITY + 0, &dxl_error);
-  if (dxl_comm_result != COMM_SUCCESS)
-  {
-    packetHandler->printTxRxResult(dxl_comm_result);
-  }
-  else if (dxl_error != 0)
-  {
-    packetHandler->printRxPacketError(dxl_error);
-  }
+	}
+	for (i = 0; i<4;i++ )
+	{
+		dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, (ADDR_PRO_INDIRECTADDRESS_FOR_READ + 8+2*i), (ADDR_PRO_PRESENT_VELOCITY + i), &dxl_error);
+		if (dxl_comm_result != COMM_SUCCESS)
+		{
+		    packetHandler->printTxRxResult(dxl_comm_result);
+		}
+	    else if (dxl_error != 0)
+		{
+			 packetHandler->printRxPacketError(dxl_error);
+	    }
 
-  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 10, ADDR_PRO_GOAL_VELOCITY + 1, &dxl_error);
-  if (dxl_comm_result != COMM_SUCCESS)
-  {
-    packetHandler->printTxRxResult(dxl_comm_result);
-  }
-  else if (dxl_error != 0)
-  {
-    packetHandler->printRxPacketError(dxl_error);
-  }
-  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 12, ADDR_PRO_GOAL_VELOCITY + 2, &dxl_error);
-  if (dxl_comm_result != COMM_SUCCESS)
-  {
-    packetHandler->printTxRxResult(dxl_comm_result);
-  }
-  else if (dxl_error != 0)
-  {
-    packetHandler->printRxPacketError(dxl_error);
-  }
-  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 14, ADDR_PRO_GOAL_VELOCITY + 3, &dxl_error);
-  if (dxl_comm_result != COMM_SUCCESS)
-  {
-    packetHandler->printTxRxResult(dxl_comm_result);
-  }
-  else if (dxl_error != 0)
-  {
-    packetHandler->printRxPacketError(dxl_error);
-  }
-  fprintf(stderr, "[DDR_PRO_INDIRECTADDRESS_FOR_WRITE:%03d] \n", ADDR_PRO_INDIRECTADDRESS_FOR_WRITE+16);
-  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_READ + 0, ADDR_PRO_PRESENT_POSITION + 0, &dxl_error);
-  if (dxl_comm_result != COMM_SUCCESS)
-  {
-    packetHandler->printTxRxResult(dxl_comm_result);
-  }
-  else if (dxl_error != 0)
-  {
-    packetHandler->printRxPacketError(dxl_error);
-  }
-
-  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_READ + 2, ADDR_PRO_PRESENT_POSITION + 1, &dxl_error);
-  if (dxl_comm_result != COMM_SUCCESS)
-  {
-    packetHandler->printTxRxResult(dxl_comm_result);
-  }
-  else if (dxl_error != 0)
-  {
-    packetHandler->printRxPacketError(dxl_error);
-  }
-
-  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_READ + 4, ADDR_PRO_PRESENT_POSITION + 2, &dxl_error);
-  if (dxl_comm_result != COMM_SUCCESS)
-  {
-    packetHandler->printTxRxResult(dxl_comm_result);
-  }
-  else if (dxl_error != 0)
-  {
-    packetHandler->printRxPacketError(dxl_error);
-  }
-
-  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_READ + 6, ADDR_PRO_PRESENT_POSITION + 3, &dxl_error);
-  if (dxl_comm_result != COMM_SUCCESS)
-  {
-    packetHandler->printTxRxResult(dxl_comm_result);
-  }
-  else if (dxl_error != 0)
-  {
-    packetHandler->printRxPacketError(dxl_error);
-  }
-
-  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_READ + 8, ADDR_PRO_PRESENT_VELOCITY + 0, &dxl_error);
-  if (dxl_comm_result != COMM_SUCCESS)
-  {
-    packetHandler->printTxRxResult(dxl_comm_result);
-  }
-  else if (dxl_error != 0)
-  {
-    packetHandler->printRxPacketError(dxl_error);
-  }
-
-  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_READ + 10, ADDR_PRO_PRESENT_VELOCITY + 1, &dxl_error);
-  if (dxl_comm_result != COMM_SUCCESS)
-  {
-    packetHandler->printTxRxResult(dxl_comm_result);
-  }
-  else if (dxl_error != 0)
-  {
-    packetHandler->printRxPacketError(dxl_error);
-  }
-  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_READ + 12, ADDR_PRO_PRESENT_VELOCITY + 2, &dxl_error);
-  if (dxl_comm_result != COMM_SUCCESS)
-  {
-    packetHandler->printTxRxResult(dxl_comm_result);
-  }
-  else if (dxl_error != 0)
-  {
-    packetHandler->printRxPacketError(dxl_error);
-  }
-  dxl_comm_result = packetHandler->write2ByteTxRx(portHandler, DXL_ID, ADDR_PRO_INDIRECTADDRESS_FOR_READ + 14, ADDR_PRO_PRESENT_VELOCITY + 3, &dxl_error);
-  if (dxl_comm_result != COMM_SUCCESS)
-  {
-    packetHandler->printTxRxResult(dxl_comm_result);
-  }
-  else if (dxl_error != 0)
-  {
-    packetHandler->printRxPacketError(dxl_error);
-  }
+	}
   // Enable Dynamixel Torque
   dxl_comm_result = packetHandler->write1ByteTxRx(portHandler, DXL_ID, ADDR_PRO_TORQUE_ENABLE, TORQUE_ENABLE, &dxl_error);
   if (dxl_comm_result != COMM_SUCCESS)

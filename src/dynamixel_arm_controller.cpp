@@ -26,7 +26,7 @@ DynamixelController::DynamixelController(PortHandler *port, PacketHandler *ph, G
 
 	  dxl_error = 0;                          // Dynamixel error
 	  ADDR_PRO_INDIRECTADDRESS_FOR_WRITE = 49;                  // EEPROM region
-	  ADDR_PRO_INDIRECTADDRESS_FOR_READ = 59;                  // EEPROM region
+	  ADDR_PRO_INDIRECTADDRESS_FOR_READ = 65;                  // EEPROM region
 
 
 	  ADDR_PRO_TORQUE_ENABLE = 562;                 // Control table address is different in Dynamixel model
@@ -182,21 +182,6 @@ int DynamixelController::add_parameters()
 	    return 0;
 	  }
 
-	  // Add parameter storage for Dynamixel#1 present velocity value
-	  dxl_addparam_result = group_read->addParam(DXL1_ID);
-	  if (dxl_addparam_result != true)
-	  {
-	    fprintf(stderr, "[ID:%03d] groupSyncRead addparam failed", DXL1_ID);
-	    return 0;
-	  }
-
-	  // Add parameter storage for Dynamixel#2 present velocity value
-	  dxl_addparam_result = group_read->addParam(DXL2_ID);
-	  if (dxl_addparam_result != true)
-	  {
-	    fprintf(stderr, "[ID:%03d] groupSyncRead addparam failed", DXL2_ID);
-	    return 0;
-	  }
 	  return 0;
 }
 

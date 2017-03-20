@@ -15,6 +15,20 @@ src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_controller.cpp.o: ../include/dyna
 src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_controller.cpp.o: ../include/dynamixel_sdk_windows/port_handler_windows.h
 src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_controller.cpp.o: ../src/dynamixel_arm_controller.cpp
 
+src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o: ../include/dynamixel_arm_controller.h
+src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o: ../include/dynamixel_sdk.h
+src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o: ../include/dynamixel_sdk/group_bulk_read.h
+src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o: ../include/dynamixel_sdk/group_bulk_write.h
+src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o: ../include/dynamixel_sdk/group_sync_read.h
+src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o: ../include/dynamixel_sdk/group_sync_write.h
+src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o: ../include/dynamixel_sdk/packet_handler.h
+src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o: ../include/dynamixel_sdk/port_handler.h
+src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o: ../include/dynamixel_sdk/protocol1_packet_handler.h
+src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o: ../include/dynamixel_sdk/protocol2_packet_handler.h
+src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o: ../include/dynamixel_sdk_linux/port_handler_linux.h
+src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o: ../include/dynamixel_sdk_windows/port_handler_windows.h
+src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o: ../src/dynamixel_arm_main.cpp
+
 src/CMakeFiles/dynamixel_arm.dir/group_bulk_read.cpp.o: ../src/group_bulk_read.cpp
 
 src/CMakeFiles/dynamixel_arm.dir/group_bulk_write.cpp.o: ../src/group_bulk_write.cpp
@@ -22,8 +36,6 @@ src/CMakeFiles/dynamixel_arm.dir/group_bulk_write.cpp.o: ../src/group_bulk_write
 src/CMakeFiles/dynamixel_arm.dir/group_sync_read.cpp.o: ../src/group_sync_read.cpp
 
 src/CMakeFiles/dynamixel_arm.dir/group_sync_write.cpp.o: ../src/group_sync_write.cpp
-
-src/CMakeFiles/dynamixel_arm.dir/indirect_address.cpp.o: ../src/indirect_address.cpp
 
 src/CMakeFiles/dynamixel_arm.dir/packet_handler.cpp.o: ../src/packet_handler.cpp
 
