@@ -7,7 +7,7 @@ project(Dynamixel_pro_arm)
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 include_directories("${PROJECT_SOURCE_DIR}/include")
 set(SRC_LIST 
-  #         "indirect_address.cpp"
+    #       "indirect_address.cpp"
  			 "dynamixel_arm_main.cpp"
              "dynamixel_arm_controller.cpp"
              "group_bulk_read.cpp"

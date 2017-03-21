@@ -170,10 +170,10 @@ int main()
    	//get pos and vel
     	dynamixelController.get_status();
     	dxl1_present_position = dynamixelController.dxl1_pre_pos;
-		dxl2_present_position = dynamixelController.dxl2_pre_pos;
     	dxl1_present_velocity = dynamixelController.dxl1_pre_vel;
+		dxl2_present_position = dynamixelController.dxl2_pre_pos;
 		dxl2_present_velocity = dynamixelController.dxl2_pre_vel;
-
+//
         printf("PresPos_1:%03d\t   PresPos_2:%03d\n",  dxl1_present_position,   dxl2_present_position);
         printf("Presvel_1:%03d\t   PresVel_2:%03d\n",  dxl1_present_velocity,   dxl2_present_velocity);
 

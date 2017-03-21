@@ -27,7 +27,7 @@ DynamixelController::DynamixelController(PortHandler *port, PacketHandler *ph, G
 	  dxl_error = 0;                          // Dynamixel error
 	  ADDR_PRO_INDIRECTADDRESS_FOR_WRITE = 49;                  // EEPROM region
 	  ADDR_PRO_INDIRECTADDRESS_FOR_READ = 65;                  // EEPROM region
-
+	  ADDR_PRO_INDIRECTDATA = 642;
 
 	  ADDR_PRO_TORQUE_ENABLE = 562;                 // Control table address is different in Dynamixel model
 	  ADDR_PRO_GOAL_POSITION = 596;
@@ -72,7 +72,7 @@ int DynamixelController::torque_enable()
 	  }
 	  else
 	  {
-	    printf("Dynamixel#%d has been successfully connected \n", DXL1_ID);
+	    printf("Dynamixel#%d torque enable \n", DXL1_ID);
 	  }
 
 	  // Enable Dynamixel#2 Torque
@@ -87,7 +87,7 @@ int DynamixelController::torque_enable()
 	  }
 	  else
 	  {
-	    printf("Dynamixel#%d has been successfully connected \n", DXL2_ID);
+	    printf("Dynamixel#%d htorque enable \n", DXL2_ID);
 	  }
 
 	  return 0;
@@ -240,14 +240,14 @@ int DynamixelController::get_status()
 	      if (dxl_comm_result != COMM_SUCCESS) ph_hd->printTxRxResult(dxl_comm_result);
 
 	      // Check if posgroupSyncRead data of Dynamixel#1 is available
-	      dxl_getdata_result = group_read->isAvailable(DXL1_ID, ADDR_PRO_PRESENT_POSITION, LEN_PRO_PRESENT_POSITION);
+	      dxl_getdata_result = group_read->isAvailable(DXL1_ID, ADDR_PRO_INDIRECTDATA, LEN_PRO_PRESENT_POSITION);
 	      if (dxl_getdata_result != true)
 	      {
 	        fprintf(stderr, "[ID:%03d]  groupSyncRead POS getdata failed \n", DXL1_ID);
 	        return 0;
 	      }
 
-	      dxl_getdata_result = group_read->isAvailable(DXL1_ID, ADDR_PRO_PRESENT_POSITION+LEN_PRO_PRESENT_POSITION, LEN_PRO_PRESENT_VELOCITY);
+	      dxl_getdata_result = group_read->isAvailable(DXL1_ID, ADDR_PRO_INDIRECTDATA+LEN_PRO_PRESENT_POSITION, LEN_PRO_PRESENT_VELOCITY);
 	      if (dxl_getdata_result != true)
 	      {
 	        fprintf(stderr, "[ID:%03d] groupSyncRead VEL getdata failed \n", DXL1_ID);
@@ -255,19 +255,19 @@ int DynamixelController::get_status()
 	      }
 
 	      // Get Dynamixel#1 present position value
-	      dxl1_pre_pos = group_read->getData(DXL1_ID, ADDR_PRO_PRESENT_POSITION, LEN_PRO_PRESENT_POSITION);
-	      dxl1_pre_vel = group_read->getData(DXL1_ID, ADDR_PRO_PRESENT_POSITION+LEN_PRO_PRESENT_POSITION, LEN_PRO_PRESENT_VELOCITY);
+	      dxl1_pre_pos = group_read->getData(DXL1_ID, ADDR_PRO_INDIRECTDATA, LEN_PRO_PRESENT_POSITION);
+	      dxl1_pre_vel = group_read->getData(DXL1_ID, ADDR_PRO_INDIRECTDATA+LEN_PRO_PRESENT_POSITION, LEN_PRO_PRESENT_VELOCITY);
 
 
 	      // Check if posgroupSyncRead data of Dynamixel#2 is available
-	      dxl_getdata_result = group_read->isAvailable(DXL2_ID, ADDR_PRO_PRESENT_POSITION, LEN_PRO_PRESENT_POSITION);
+	      dxl_getdata_result = group_read->isAvailable(DXL2_ID, ADDR_PRO_INDIRECTDATA, LEN_PRO_PRESENT_POSITION);
 	      if (dxl_getdata_result != true)
 	      {
 	        fprintf(stderr, "[ID:%03d] groupSyncRead POS getdata failed \n", DXL2_ID);
 	        return 0;
 	      }
 
-	      dxl_getdata_result = group_read->isAvailable(DXL2_ID, ADDR_PRO_PRESENT_POSITION+LEN_PRO_PRESENT_POSITION, LEN_PRO_PRESENT_VELOCITY);
+	      dxl_getdata_result = group_read->isAvailable(DXL2_ID, ADDR_PRO_INDIRECTDATA+LEN_PRO_PRESENT_POSITION, LEN_PRO_PRESENT_VELOCITY);
 	      if (dxl_getdata_result != true)
 	      {
 	        fprintf(stderr, "[ID:%03d] groupSyncRead VEL getdata failed \n", DXL2_ID);
@@ -276,8 +276,8 @@ int DynamixelController::get_status()
 
 
 	      // Get Dynamixel#2 present position value
-	      dxl2_pre_pos = group_read->getData(DXL2_ID, ADDR_PRO_PRESENT_POSITION, LEN_PRO_PRESENT_POSITION);
-	      dxl2_pre_vel = group_read->getData(DXL2_ID, ADDR_PRO_PRESENT_POSITION+LEN_PRO_PRESENT_POSITION, LEN_PRO_PRESENT_VELOCITY);
+	      dxl2_pre_pos = group_read->getData(DXL2_ID, ADDR_PRO_INDIRECTDATA, LEN_PRO_PRESENT_POSITION);
+	      dxl2_pre_vel = group_read->getData(DXL2_ID, ADDR_PRO_INDIRECTDATA+LEN_PRO_PRESENT_POSITION, LEN_PRO_PRESENT_VELOCITY);
 
 		  return 0;
 }
@@ -294,6 +294,10 @@ int DynamixelController::torque_disable()
 	  {
 	    ph_hd->printRxPacketError(dxl_error);
 	  }
+	  else
+	  {
+	    printf("Dynamixel#%d  torque disable \n", DXL1_ID);
+	  }
 
 	  // Disable Dynamixel#2 Torque
 	  dxl_comm_result = ph_hd->write1ByteTxRx(port_hd, DXL2_ID, ADDR_PRO_TORQUE_ENABLE, TORQUE_DISABLE, &dxl_error);
@@ -305,6 +309,11 @@ int DynamixelController::torque_disable()
 	  {
 	    ph_hd->printRxPacketError(dxl_error);
 	  }
+	  else
+	  {
+	    printf("Dynamixel#%d  torque disable \n", DXL2_ID);
+	  }
+
 	  return 0;
 }
 

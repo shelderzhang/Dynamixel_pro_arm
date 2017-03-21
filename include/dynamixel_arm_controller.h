@@ -55,6 +55,7 @@ class WINDECLSPEC DynamixelController
 
   uint16_t ADDR_PRO_INDIRECTADDRESS_FOR_WRITE;                       // EEPROM region
   uint16_t ADDR_PRO_INDIRECTADDRESS_FOR_READ;                        // EEPROM region
+  uint16_t ADDR_PRO_INDIRECTDATA;
 
   uint16_t ADDR_PRO_TORQUE_ENABLE;                 // Control table address is different in Dynamixel model
   uint16_t ADDR_PRO_GOAL_POSITION;
