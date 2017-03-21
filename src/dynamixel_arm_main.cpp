@@ -113,11 +113,14 @@ int main()
   dynamixel::DynamixelController dynamixelController(portHandler, packetHandler, &groupSyncWrite, &groupSyncRead);
 
   int index = 0;
-  int dxl1_goal_position[2] = {-13000, 13000};
-  int dxl2_goal_position[2] = {-52000, 52000}; // Goal position
-  int dxl1_goal_velocity[2] = {-1000, 1000};
-  int dxl2_goal_velocity[2] = {-500, 500}; // Goal position
-
+//  int dxl1_goal_position[2] = {-13000, 13000};
+//  int dxl2_goal_position[2] = {-52000, 52000}; // Goal position
+//  int dxl1_goal_velocity[2] = {-1000, 1000};
+//  int dxl2_goal_velocity[2] = {-500, 500}; // Goal position
+  int dxl1_goal_position[2] = {-23000, 23000};
+  int dxl2_goal_position[2] = {-62000, 62000}; // Goal position
+  int dxl1_goal_velocity[2] = {-5000, 5000};
+  int dxl2_goal_velocity[2] = {-8000, 8000}; // Goal position
   int32_t dxl1_present_position = 0, dxl2_present_position = 0;              // Present position
   int32_t dxl1_present_velocity = 0, dxl2_present_velocity = 0;
 
