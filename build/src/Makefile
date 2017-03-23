@@ -115,6 +115,30 @@ dynamixel_arm/fast:
 	cd /home/gyz/src/Dynamixel_pro_arm/build && $(MAKE) -f src/CMakeFiles/dynamixel_arm.dir/build.make src/CMakeFiles/dynamixel_arm.dir/build
 .PHONY : dynamixel_arm/fast
 
+autopilot_interface.o: autopilot_interface.cpp.o
+.PHONY : autopilot_interface.o
+
+# target to build an object file
+autopilot_interface.cpp.o:
+	cd /home/gyz/src/Dynamixel_pro_arm/build && $(MAKE) -f src/CMakeFiles/dynamixel_arm.dir/build.make src/CMakeFiles/dynamixel_arm.dir/autopilot_interface.cpp.o
+.PHONY : autopilot_interface.cpp.o
+
+autopilot_interface.i: autopilot_interface.cpp.i
+.PHONY : autopilot_interface.i
+
+# target to preprocess a source file
+autopilot_interface.cpp.i:
+	cd /home/gyz/src/Dynamixel_pro_arm/build && $(MAKE) -f src/CMakeFiles/dynamixel_arm.dir/build.make src/CMakeFiles/dynamixel_arm.dir/autopilot_interface.cpp.i
+.PHONY : autopilot_interface.cpp.i
+
+autopilot_interface.s: autopilot_interface.cpp.s
+.PHONY : autopilot_interface.s
+
+# target to generate assembly for a file
+autopilot_interface.cpp.s:
+	cd /home/gyz/src/Dynamixel_pro_arm/build && $(MAKE) -f src/CMakeFiles/dynamixel_arm.dir/build.make src/CMakeFiles/dynamixel_arm.dir/autopilot_interface.cpp.s
+.PHONY : autopilot_interface.cpp.s
+
 dynamixel_arm_controller.o: dynamixel_arm_controller.cpp.o
 .PHONY : dynamixel_arm_controller.o
 
@@ -379,6 +403,30 @@ protocol2_packet_handler.cpp.s:
 	cd /home/gyz/src/Dynamixel_pro_arm/build && $(MAKE) -f src/CMakeFiles/dynamixel_arm.dir/build.make src/CMakeFiles/dynamixel_arm.dir/protocol2_packet_handler.cpp.s
 .PHONY : protocol2_packet_handler.cpp.s
 
+serial_port.o: serial_port.cpp.o
+.PHONY : serial_port.o
+
+# target to build an object file
+serial_port.cpp.o:
+	cd /home/gyz/src/Dynamixel_pro_arm/build && $(MAKE) -f src/CMakeFiles/dynamixel_arm.dir/build.make src/CMakeFiles/dynamixel_arm.dir/serial_port.cpp.o
+.PHONY : serial_port.cpp.o
+
+serial_port.i: serial_port.cpp.i
+.PHONY : serial_port.i
+
+# target to preprocess a source file
+serial_port.cpp.i:
+	cd /home/gyz/src/Dynamixel_pro_arm/build && $(MAKE) -f src/CMakeFiles/dynamixel_arm.dir/build.make src/CMakeFiles/dynamixel_arm.dir/serial_port.cpp.i
+.PHONY : serial_port.cpp.i
+
+serial_port.s: serial_port.cpp.s
+.PHONY : serial_port.s
+
+# target to generate assembly for a file
+serial_port.cpp.s:
+	cd /home/gyz/src/Dynamixel_pro_arm/build && $(MAKE) -f src/CMakeFiles/dynamixel_arm.dir/build.make src/CMakeFiles/dynamixel_arm.dir/serial_port.cpp.s
+.PHONY : serial_port.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -388,6 +436,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... dynamixel_arm"
+	@echo "... autopilot_interface.o"
+	@echo "... autopilot_interface.i"
+	@echo "... autopilot_interface.s"
 	@echo "... dynamixel_arm_controller.o"
 	@echo "... dynamixel_arm_controller.i"
 	@echo "... dynamixel_arm_controller.s"
@@ -421,6 +472,9 @@ help:
 	@echo "... protocol2_packet_handler.o"
 	@echo "... protocol2_packet_handler.i"
 	@echo "... protocol2_packet_handler.s"
+	@echo "... serial_port.o"
+	@echo "... serial_port.i"
+	@echo "... serial_port.s"
 .PHONY : help
 
 

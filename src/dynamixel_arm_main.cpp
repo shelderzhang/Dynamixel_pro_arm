@@ -18,7 +18,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "../include/dynamixel_arm_controller.h"                             // Uses Dynamixel SDK library
+#include "dynamixel_arm_controller.h"                             // Uses Dynamixel SDK library
+#include "autopilot_interface.h"
+#include "serial_port.h"
 
 // Control table address
 // Control table address is different in Dynamixel model
@@ -43,54 +45,9 @@
 #define DXL_MOVING_STATUS_THRESHOLD     20                  // Dynamixel moving status threshold
 
 #define ESC_ASCII_VALUE                 0x1b
+int getch();
+int kbhit(void);
 
-int getch()
-{
-#ifdef __linux__
-  struct termios oldt, newt;
-  int ch;
-  tcgetattr(STDIN_FILENO, &oldt);
-  newt = oldt;
-  newt.c_lflag &= ~(ICANON | ECHO);
-  tcsetattr(STDIN_FILENO, TCSANOW, &newt);
-  ch = getchar();
-  tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
-  return ch;
-#elif defined(_WIN32) || defined(_WIN64)
-  return _getch();
-#endif
-}
-
-int kbhit(void)
-{
-#ifdef __linux__
-  struct termios oldt, newt;
-  int ch;
-  int oldf;
-
-  tcgetattr(STDIN_FILENO, &oldt);
-  newt = oldt;
-  newt.c_lflag &= ~(ICANON | ECHO);
-  tcsetattr(STDIN_FILENO, TCSANOW, &newt);
-  oldf = fcntl(STDIN_FILENO, F_GETFL, 0);
-  fcntl(STDIN_FILENO, F_SETFL, oldf | O_NONBLOCK);
-
-  ch = getchar();
-
-  tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
-  fcntl(STDIN_FILENO, F_SETFL, oldf);
-
-  if (ch != EOF)
-  {
-    ungetc(ch, stdin);
-    return 1;
-  }
-
-  return 0;
-#elif defined(_WIN32) || defined(_WIN64)
-  return _kbhit();
-#endif
-}
 
 int main()
 {
@@ -150,10 +107,41 @@ int main()
     return 0;
   }
 
+  char *uart_name = (char*)"/dev/ttyUSB0";
+  int baudrate = 57600;
+  Autopilot_Interface *autopilot_interface_quit;
+  Serial_Port *serial_port_quit;
+  /*
+   * Construct a Serial_Port object
+   * This object handles the opening and closing of the Robai cyton epsilon300 controller
+   *  computer's serial port over which it will communicate to an autopilot.  It has
+   * methods to read and write a mavlink_message_t object.  To help with read
+   * and write in the context of pthreading, it gaurds port operations with a
+   * pthread mutex lock (int fd).
+   *
+   */
+  Serial_Port serial_port(uart_name, baudrate);
 
+  /*
+   * Construct an Autopilot_Interface objiect,This object will start
+   *  two threads for read and write MAVlink message of
+   * commands to move the robotic arm and its status.
+   *
+   */
+  Autopilot_Interface autopilot_interface(&serial_port);
 
+  serial_port_quit         = &serial_port;
+  autopilot_interface_quit = &autopilot_interface;
+//  signal(SIGINT,quit_handler);
+
+  /*
+   * This is where the port is opened, and read and write threads are started.
+   */
+  serial_port.start();
+  autopilot_interface.start();
   // Add parameter storage for Dynamixel#1 present position value
   dynamixelController.arm_initial();
+  dynamixelController.start();
 
 
   while(1)
@@ -171,12 +159,19 @@ int main()
     do
     {
    	//get pos and vel
-    	dynamixelController.get_status();
+
+    	pthread_mutex_lock(&(dynamixelController.joint_status_lock));
     	dxl1_present_position = dynamixelController.dxl1_pre_pos;
-    	dxl1_present_velocity = dynamixelController.dxl1_pre_vel;
 		dxl2_present_position = dynamixelController.dxl2_pre_pos;
-		dxl2_present_velocity = dynamixelController.dxl2_pre_vel;
-//
+		pthread_mutex_unlock(&(dynamixelController.joint_status_lock));
+
+    	pthread_mutex_lock(&(autopilot_interface.joints_lock));
+    	autopilot_interface.mani_joints.joint_posi_1 = dynamixelController.dxl1_pre_pos;
+    	autopilot_interface.mani_joints.joint_posi_2 = dynamixelController.dxl2_pre_pos;
+    	autopilot_interface.mani_joints.joint_rate_1 = dynamixelController.dxl1_pre_vel;
+    	autopilot_interface.mani_joints.joint_rate_2 = dynamixelController.dxl2_pre_vel;
+    	pthread_mutex_unlock(&(autopilot_interface.joints_lock));
+
         printf("PresPos_1:%03d\t   PresPos_2:%03d\n",  dxl1_present_position,   dxl2_present_position);
         printf("Presvel_1:%03d\t   PresVel_2:%03d\n",  dxl1_present_velocity,   dxl2_present_velocity);
 
@@ -192,6 +187,11 @@ int main()
       index = 0;
     }
   }
+  // --------------------------------------------------------------------------
+  //   Join threads of serial port
+  // --------------------------------------------------------------------------
+  pthread_join (autopilot_interface.read_tid, NULL);
+  pthread_join (autopilot_interface.write_tid, NULL);
 
   dynamixelController.torque_disable();
 
@@ -200,4 +200,53 @@ int main()
 
   return 0;
 }
+
+int getch()
+{
+#ifdef __linux__
+  struct termios oldt, newt;
+  int ch;
+  tcgetattr(STDIN_FILENO, &oldt);
+  newt = oldt;
+  newt.c_lflag &= ~(ICANON | ECHO);
+  tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+  ch = getchar();
+  tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+  return ch;
+#elif defined(_WIN32) || defined(_WIN64)
+  return _getch();
+#endif
+}
+
+int kbhit(void)
+{
+#ifdef __linux__
+  struct termios oldt, newt;
+  int ch;
+  int oldf;
+
+  tcgetattr(STDIN_FILENO, &oldt);
+  newt = oldt;
+  newt.c_lflag &= ~(ICANON | ECHO);
+  tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+  oldf = fcntl(STDIN_FILENO, F_GETFL, 0);
+  fcntl(STDIN_FILENO, F_SETFL, oldf | O_NONBLOCK);
+
+  ch = getchar();
+
+  tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+  fcntl(STDIN_FILENO, F_SETFL, oldf);
+
+  if (ch != EOF)
+  {
+    ungetc(ch, stdin);
+    return 1;
+  }
+
+  return 0;
+#elif defined(_WIN32) || defined(_WIN64)
+  return _kbhit();
+#endif
+}
+
 

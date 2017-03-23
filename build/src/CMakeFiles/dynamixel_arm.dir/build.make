@@ -95,9 +95,55 @@ src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_controller.cpp.o.provides: src/CM
 
 src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_controller.cpp.o.provides.build: src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_controller.cpp.o
 
+src/CMakeFiles/dynamixel_arm.dir/serial_port.cpp.o: src/CMakeFiles/dynamixel_arm.dir/flags.make
+src/CMakeFiles/dynamixel_arm.dir/serial_port.cpp.o: ../src/serial_port.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/dynamixel_arm.dir/serial_port.cpp.o"
+	cd /home/gyz/src/Dynamixel_pro_arm/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/dynamixel_arm.dir/serial_port.cpp.o -c /home/gyz/src/Dynamixel_pro_arm/src/serial_port.cpp
+
+src/CMakeFiles/dynamixel_arm.dir/serial_port.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dynamixel_arm.dir/serial_port.cpp.i"
+	cd /home/gyz/src/Dynamixel_pro_arm/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/gyz/src/Dynamixel_pro_arm/src/serial_port.cpp > CMakeFiles/dynamixel_arm.dir/serial_port.cpp.i
+
+src/CMakeFiles/dynamixel_arm.dir/serial_port.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dynamixel_arm.dir/serial_port.cpp.s"
+	cd /home/gyz/src/Dynamixel_pro_arm/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/gyz/src/Dynamixel_pro_arm/src/serial_port.cpp -o CMakeFiles/dynamixel_arm.dir/serial_port.cpp.s
+
+src/CMakeFiles/dynamixel_arm.dir/serial_port.cpp.o.requires:
+.PHONY : src/CMakeFiles/dynamixel_arm.dir/serial_port.cpp.o.requires
+
+src/CMakeFiles/dynamixel_arm.dir/serial_port.cpp.o.provides: src/CMakeFiles/dynamixel_arm.dir/serial_port.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/dynamixel_arm.dir/build.make src/CMakeFiles/dynamixel_arm.dir/serial_port.cpp.o.provides.build
+.PHONY : src/CMakeFiles/dynamixel_arm.dir/serial_port.cpp.o.provides
+
+src/CMakeFiles/dynamixel_arm.dir/serial_port.cpp.o.provides.build: src/CMakeFiles/dynamixel_arm.dir/serial_port.cpp.o
+
+src/CMakeFiles/dynamixel_arm.dir/autopilot_interface.cpp.o: src/CMakeFiles/dynamixel_arm.dir/flags.make
+src/CMakeFiles/dynamixel_arm.dir/autopilot_interface.cpp.o: ../src/autopilot_interface.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/dynamixel_arm.dir/autopilot_interface.cpp.o"
+	cd /home/gyz/src/Dynamixel_pro_arm/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/dynamixel_arm.dir/autopilot_interface.cpp.o -c /home/gyz/src/Dynamixel_pro_arm/src/autopilot_interface.cpp
+
+src/CMakeFiles/dynamixel_arm.dir/autopilot_interface.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dynamixel_arm.dir/autopilot_interface.cpp.i"
+	cd /home/gyz/src/Dynamixel_pro_arm/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/gyz/src/Dynamixel_pro_arm/src/autopilot_interface.cpp > CMakeFiles/dynamixel_arm.dir/autopilot_interface.cpp.i
+
+src/CMakeFiles/dynamixel_arm.dir/autopilot_interface.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dynamixel_arm.dir/autopilot_interface.cpp.s"
+	cd /home/gyz/src/Dynamixel_pro_arm/build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/gyz/src/Dynamixel_pro_arm/src/autopilot_interface.cpp -o CMakeFiles/dynamixel_arm.dir/autopilot_interface.cpp.s
+
+src/CMakeFiles/dynamixel_arm.dir/autopilot_interface.cpp.o.requires:
+.PHONY : src/CMakeFiles/dynamixel_arm.dir/autopilot_interface.cpp.o.requires
+
+src/CMakeFiles/dynamixel_arm.dir/autopilot_interface.cpp.o.provides: src/CMakeFiles/dynamixel_arm.dir/autopilot_interface.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/dynamixel_arm.dir/build.make src/CMakeFiles/dynamixel_arm.dir/autopilot_interface.cpp.o.provides.build
+.PHONY : src/CMakeFiles/dynamixel_arm.dir/autopilot_interface.cpp.o.provides
+
+src/CMakeFiles/dynamixel_arm.dir/autopilot_interface.cpp.o.provides.build: src/CMakeFiles/dynamixel_arm.dir/autopilot_interface.cpp.o
+
 src/CMakeFiles/dynamixel_arm.dir/group_bulk_read.cpp.o: src/CMakeFiles/dynamixel_arm.dir/flags.make
 src/CMakeFiles/dynamixel_arm.dir/group_bulk_read.cpp.o: ../src/group_bulk_read.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/dynamixel_arm.dir/group_bulk_read.cpp.o"
 	cd /home/gyz/src/Dynamixel_pro_arm/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/dynamixel_arm.dir/group_bulk_read.cpp.o -c /home/gyz/src/Dynamixel_pro_arm/src/group_bulk_read.cpp
 
@@ -120,7 +166,7 @@ src/CMakeFiles/dynamixel_arm.dir/group_bulk_read.cpp.o.provides.build: src/CMake
 
 src/CMakeFiles/dynamixel_arm.dir/group_bulk_write.cpp.o: src/CMakeFiles/dynamixel_arm.dir/flags.make
 src/CMakeFiles/dynamixel_arm.dir/group_bulk_write.cpp.o: ../src/group_bulk_write.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/dynamixel_arm.dir/group_bulk_write.cpp.o"
 	cd /home/gyz/src/Dynamixel_pro_arm/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/dynamixel_arm.dir/group_bulk_write.cpp.o -c /home/gyz/src/Dynamixel_pro_arm/src/group_bulk_write.cpp
 
@@ -143,7 +189,7 @@ src/CMakeFiles/dynamixel_arm.dir/group_bulk_write.cpp.o.provides.build: src/CMak
 
 src/CMakeFiles/dynamixel_arm.dir/group_sync_read.cpp.o: src/CMakeFiles/dynamixel_arm.dir/flags.make
 src/CMakeFiles/dynamixel_arm.dir/group_sync_read.cpp.o: ../src/group_sync_read.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/dynamixel_arm.dir/group_sync_read.cpp.o"
 	cd /home/gyz/src/Dynamixel_pro_arm/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/dynamixel_arm.dir/group_sync_read.cpp.o -c /home/gyz/src/Dynamixel_pro_arm/src/group_sync_read.cpp
 
@@ -166,7 +212,7 @@ src/CMakeFiles/dynamixel_arm.dir/group_sync_read.cpp.o.provides.build: src/CMake
 
 src/CMakeFiles/dynamixel_arm.dir/group_sync_write.cpp.o: src/CMakeFiles/dynamixel_arm.dir/flags.make
 src/CMakeFiles/dynamixel_arm.dir/group_sync_write.cpp.o: ../src/group_sync_write.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/dynamixel_arm.dir/group_sync_write.cpp.o"
 	cd /home/gyz/src/Dynamixel_pro_arm/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/dynamixel_arm.dir/group_sync_write.cpp.o -c /home/gyz/src/Dynamixel_pro_arm/src/group_sync_write.cpp
 
@@ -189,7 +235,7 @@ src/CMakeFiles/dynamixel_arm.dir/group_sync_write.cpp.o.provides.build: src/CMak
 
 src/CMakeFiles/dynamixel_arm.dir/packet_handler.cpp.o: src/CMakeFiles/dynamixel_arm.dir/flags.make
 src/CMakeFiles/dynamixel_arm.dir/packet_handler.cpp.o: ../src/packet_handler.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/dynamixel_arm.dir/packet_handler.cpp.o"
 	cd /home/gyz/src/Dynamixel_pro_arm/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/dynamixel_arm.dir/packet_handler.cpp.o -c /home/gyz/src/Dynamixel_pro_arm/src/packet_handler.cpp
 
@@ -212,7 +258,7 @@ src/CMakeFiles/dynamixel_arm.dir/packet_handler.cpp.o.provides.build: src/CMakeF
 
 src/CMakeFiles/dynamixel_arm.dir/port_handler.cpp.o: src/CMakeFiles/dynamixel_arm.dir/flags.make
 src/CMakeFiles/dynamixel_arm.dir/port_handler.cpp.o: ../src/port_handler.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/dynamixel_arm.dir/port_handler.cpp.o"
 	cd /home/gyz/src/Dynamixel_pro_arm/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/dynamixel_arm.dir/port_handler.cpp.o -c /home/gyz/src/Dynamixel_pro_arm/src/port_handler.cpp
 
@@ -235,7 +281,7 @@ src/CMakeFiles/dynamixel_arm.dir/port_handler.cpp.o.provides.build: src/CMakeFil
 
 src/CMakeFiles/dynamixel_arm.dir/port_handler_linux.cpp.o: src/CMakeFiles/dynamixel_arm.dir/flags.make
 src/CMakeFiles/dynamixel_arm.dir/port_handler_linux.cpp.o: ../src/port_handler_linux.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/dynamixel_arm.dir/port_handler_linux.cpp.o"
 	cd /home/gyz/src/Dynamixel_pro_arm/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/dynamixel_arm.dir/port_handler_linux.cpp.o -c /home/gyz/src/Dynamixel_pro_arm/src/port_handler_linux.cpp
 
@@ -258,7 +304,7 @@ src/CMakeFiles/dynamixel_arm.dir/port_handler_linux.cpp.o.provides.build: src/CM
 
 src/CMakeFiles/dynamixel_arm.dir/protocol1_packet_handler.cpp.o: src/CMakeFiles/dynamixel_arm.dir/flags.make
 src/CMakeFiles/dynamixel_arm.dir/protocol1_packet_handler.cpp.o: ../src/protocol1_packet_handler.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles $(CMAKE_PROGRESS_10)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles $(CMAKE_PROGRESS_12)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/dynamixel_arm.dir/protocol1_packet_handler.cpp.o"
 	cd /home/gyz/src/Dynamixel_pro_arm/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/dynamixel_arm.dir/protocol1_packet_handler.cpp.o -c /home/gyz/src/Dynamixel_pro_arm/src/protocol1_packet_handler.cpp
 
@@ -281,7 +327,7 @@ src/CMakeFiles/dynamixel_arm.dir/protocol1_packet_handler.cpp.o.provides.build: 
 
 src/CMakeFiles/dynamixel_arm.dir/protocol2_packet_handler.cpp.o: src/CMakeFiles/dynamixel_arm.dir/flags.make
 src/CMakeFiles/dynamixel_arm.dir/protocol2_packet_handler.cpp.o: ../src/protocol2_packet_handler.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles $(CMAKE_PROGRESS_11)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/gyz/src/Dynamixel_pro_arm/build/CMakeFiles $(CMAKE_PROGRESS_13)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/dynamixel_arm.dir/protocol2_packet_handler.cpp.o"
 	cd /home/gyz/src/Dynamixel_pro_arm/build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/dynamixel_arm.dir/protocol2_packet_handler.cpp.o -c /home/gyz/src/Dynamixel_pro_arm/src/protocol2_packet_handler.cpp
 
@@ -306,6 +352,8 @@ src/CMakeFiles/dynamixel_arm.dir/protocol2_packet_handler.cpp.o.provides.build: 
 dynamixel_arm_OBJECTS = \
 "CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o" \
 "CMakeFiles/dynamixel_arm.dir/dynamixel_arm_controller.cpp.o" \
+"CMakeFiles/dynamixel_arm.dir/serial_port.cpp.o" \
+"CMakeFiles/dynamixel_arm.dir/autopilot_interface.cpp.o" \
 "CMakeFiles/dynamixel_arm.dir/group_bulk_read.cpp.o" \
 "CMakeFiles/dynamixel_arm.dir/group_bulk_write.cpp.o" \
 "CMakeFiles/dynamixel_arm.dir/group_sync_read.cpp.o" \
@@ -321,6 +369,8 @@ dynamixel_arm_EXTERNAL_OBJECTS =
 
 src/bin/dynamixel_arm: src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o
 src/bin/dynamixel_arm: src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_controller.cpp.o
+src/bin/dynamixel_arm: src/CMakeFiles/dynamixel_arm.dir/serial_port.cpp.o
+src/bin/dynamixel_arm: src/CMakeFiles/dynamixel_arm.dir/autopilot_interface.cpp.o
 src/bin/dynamixel_arm: src/CMakeFiles/dynamixel_arm.dir/group_bulk_read.cpp.o
 src/bin/dynamixel_arm: src/CMakeFiles/dynamixel_arm.dir/group_bulk_write.cpp.o
 src/bin/dynamixel_arm: src/CMakeFiles/dynamixel_arm.dir/group_sync_read.cpp.o
@@ -341,6 +391,8 @@ src/CMakeFiles/dynamixel_arm.dir/build: src/bin/dynamixel_arm
 
 src/CMakeFiles/dynamixel_arm.dir/requires: src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o.requires
 src/CMakeFiles/dynamixel_arm.dir/requires: src/CMakeFiles/dynamixel_arm.dir/dynamixel_arm_controller.cpp.o.requires
+src/CMakeFiles/dynamixel_arm.dir/requires: src/CMakeFiles/dynamixel_arm.dir/serial_port.cpp.o.requires
+src/CMakeFiles/dynamixel_arm.dir/requires: src/CMakeFiles/dynamixel_arm.dir/autopilot_interface.cpp.o.requires
 src/CMakeFiles/dynamixel_arm.dir/requires: src/CMakeFiles/dynamixel_arm.dir/group_bulk_read.cpp.o.requires
 src/CMakeFiles/dynamixel_arm.dir/requires: src/CMakeFiles/dynamixel_arm.dir/group_bulk_write.cpp.o.requires
 src/CMakeFiles/dynamixel_arm.dir/requires: src/CMakeFiles/dynamixel_arm.dir/group_sync_read.cpp.o.requires

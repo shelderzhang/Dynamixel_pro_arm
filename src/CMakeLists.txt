@@ -5,11 +5,14 @@ cmake_minimum_required(VERSION 2.8.12)
 project(Dynamixel_pro_arm)
 
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
-include_directories("${PROJECT_SOURCE_DIR}/include")
+include_directories("${PROJECT_SOURCE_DIR}/../include";
+                    "${PROJECT_SOURCE_DIR}/../include/mavlink/v2.0")
 set(SRC_LIST 
     #       "indirect_address.cpp"
  			 "dynamixel_arm_main.cpp"
              "dynamixel_arm_controller.cpp"
+             "serial_port.cpp"
+			 "autopilot_interface.cpp"
              "group_bulk_read.cpp"
              "group_bulk_write.cpp"
              "group_sync_read.cpp"
@@ -21,6 +24,7 @@ set(SRC_LIST
              "protocol2_packet_handler.cpp")
 #aux_source_directory(. SRC_LIST)
 add_executable(dynamixel_arm ${SRC_LIST})
-
+target_link_libraries(dynamixel_arm
+                      pthread)
 
 

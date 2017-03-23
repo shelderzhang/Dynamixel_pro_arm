@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/dynamixel_arm.dir/dynamixel_arm_main.cpp.o"
   "CMakeFiles/dynamixel_arm.dir/dynamixel_arm_controller.cpp.o"
+  "CMakeFiles/dynamixel_arm.dir/serial_port.cpp.o"
+  "CMakeFiles/dynamixel_arm.dir/autopilot_interface.cpp.o"
   "CMakeFiles/dynamixel_arm.dir/group_bulk_read.cpp.o"
   "CMakeFiles/dynamixel_arm.dir/group_bulk_write.cpp.o"
   "CMakeFiles/dynamixel_arm.dir/group_sync_read.cpp.o"

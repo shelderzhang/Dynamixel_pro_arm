@@ -9,17 +9,18 @@
 #define INCLUDE_DYNAMIXEL_ARM_CONTROLLER_H_
 #include "dynamixel_sdk.h"
 // Control table address
-
-
+#include <pthread.h>
+#include <unistd.h>
 namespace dynamixel
 
 {
+	void* read_armstatus_thread(void*args);
 
 class WINDECLSPEC DynamixelController
 {
 	 public:
   DynamixelController(PortHandler *port, PacketHandler *ph, GroupSyncWrite *wr,  GroupSyncRead *rd);
-  ~DynamixelController(){};
+  ~DynamixelController();
 
   int dxl1_pos;
   int dxl2_pos;
@@ -34,7 +35,10 @@ class WINDECLSPEC DynamixelController
   int set_targets();
   int get_status();
   int torque_disable();
-
+  void read_armstatus_thread_main();
+  pthread_mutex_t joint_status_lock;
+  void start();
+  void stop();
 
  private:
   PortHandler    *port_hd;
@@ -85,6 +89,8 @@ class WINDECLSPEC DynamixelController
 
   int indirectdata_parameter(int DXL_ID);
   int add_parameters();
+  bool time_to_exit;
+  pthread_t read_armstatus_tid;
 
 };
 
