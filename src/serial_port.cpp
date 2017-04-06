@@ -195,7 +195,6 @@ write_message(const mavlink_message_t &message)
 
 	// Translate message to buffer
 	unsigned len = mavlink_msg_to_send_buffer((uint8_t*)buf, &message);
-
 	// Write buffer to serial port, locks port while writing
 	int bytesWritten = _write_port(buf,len);
 
@@ -503,12 +502,12 @@ _read_port(uint8_t &cp)
 {
 
 	// Lock
-	pthread_mutex_lock(&lock);
+//	pthread_mutex_lock(&lock);
 
 	int result = read(fd, &cp, 1);
 
 	// Unlock
-	pthread_mutex_unlock(&lock);
+//	pthread_mutex_unlock(&lock);
 
 	return result;
 }
@@ -523,13 +522,11 @@ _write_port(char *buf, unsigned len)
 
 	// Lock
 	pthread_mutex_lock(&lock);
-
 	// Write packet via serial link
 	const int bytesWritten = static_cast<int>(write(fd, buf, len));
 
 	// Wait until all data has been written
 	tcdrain(fd);
-
 	// Unlock
 	pthread_mutex_unlock(&lock);
 

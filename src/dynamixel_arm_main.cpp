@@ -17,6 +17,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
 
 #include "dynamixel_arm_controller.h"                             // Uses Dynamixel SDK library
 #include "autopilot_interface.h"
@@ -33,21 +34,22 @@
 #define LEN_PRO_INDIRECTDATA_FOR_READ           8
 
 #define BAUDRATE                        115200
-#define DEVICENAME                      "/dev/ttyUSB0"      // Check which port is being used on your controller
+#define DEVICENAME                      "/dev/Dypro_usb"      // Check which port is being used on your controller
 
 
                                                          // ex) Windows: "COM1"   Linux: "/dev/ttyUSB0"
 // Protocol version
 #define PROTOCOL_VERSION                2.0                 // See which protocol version is used in the Dynamixel
 
-#define DXL_MINIMUM_POSITION_VALUE      -100000             // Dynamixel will rotate between this value
-#define DXL_MAXIMUM_POSITION_VALUE      100000              // and this value (note that the Dynamixel would not move when the position value is out of movable range. Check e-manual about the range of the Dynamixel you use.)
-#define DXL_MOVING_STATUS_THRESHOLD     20                  // Dynamixel moving status threshold
+#define DXL_MINIMUM_POSITION_VALUE      -131584             // Dynamixel will rotate between this value
+#define DXL_MAXIMUM_POSITION_VALUE      131584              // and this value (note that the Dynamixel would not move when the position value is out of movable range. Check e-manual about the range of the Dynamixel you use.)
+#define DXL_MOVING_STATUS_THRESHOLD     100                  // Dynamixel moving status threshold
 
 #define ESC_ASCII_VALUE                 0x1b
 int getch();
 int kbhit(void);
 
+const float PI = 3.1415926535898;
 
 int main()
 {
@@ -107,8 +109,8 @@ int main()
     return 0;
   }
 
-  char *uart_name = (char*)"/dev/ttyUSB0";
-  int baudrate = 57600;
+  char *uart_name = (char*)"/dev/px4_usb";
+  int baudrate = 115200;
   Autopilot_Interface *autopilot_interface_quit;
   Serial_Port *serial_port_quit;
   /*
@@ -132,7 +134,7 @@ int main()
 
   serial_port_quit         = &serial_port;
   autopilot_interface_quit = &autopilot_interface;
-//  signal(SIGINT,quit_handler);
+
 
   /*
    * This is where the port is opened, and read and write threads are started.
@@ -141,7 +143,7 @@ int main()
   autopilot_interface.start();
   // Add parameter storage for Dynamixel#1 present position value
   dynamixelController.arm_initial();
-  dynamixelController.start();
+
 
 
   while(1)
@@ -160,20 +162,21 @@ int main()
     {
    	//get pos and vel
 
-    	pthread_mutex_lock(&(dynamixelController.joint_status_lock));
+    	dynamixelController.get_status();
     	dxl1_present_position = dynamixelController.dxl1_pre_pos;
 		dxl2_present_position = dynamixelController.dxl2_pre_pos;
-		pthread_mutex_unlock(&(dynamixelController.joint_status_lock));
+		dxl1_present_velocity = dynamixelController.dxl1_pre_vel;
+		dxl2_present_velocity = dynamixelController.dxl2_pre_vel;
 
     	pthread_mutex_lock(&(autopilot_interface.joints_lock));
-    	autopilot_interface.mani_joints.joint_posi_1 = dynamixelController.dxl1_pre_pos;
-    	autopilot_interface.mani_joints.joint_posi_2 = dynamixelController.dxl2_pre_pos;
-    	autopilot_interface.mani_joints.joint_rate_1 = dynamixelController.dxl1_pre_vel;
-    	autopilot_interface.mani_joints.joint_rate_2 = dynamixelController.dxl2_pre_vel;
+    	autopilot_interface.mani_joints.joint_posi_1 = dxl1_present_position;
+    	autopilot_interface.mani_joints.joint_posi_2 = dxl2_present_position;
+    	autopilot_interface.mani_joints.joint_rate_1 = dxl1_present_velocity;
+    	autopilot_interface.mani_joints.joint_rate_2 = dxl2_present_velocity;
     	pthread_mutex_unlock(&(autopilot_interface.joints_lock));
 
-        printf("PresPos_1:%03d\t   PresPos_2:%03d\n",  dxl1_present_position,   dxl2_present_position);
-        printf("Presvel_1:%03d\t   PresVel_2:%03d\n",  dxl1_present_velocity,   dxl2_present_velocity);
+//        printf("PresPos_1:%03d\t   PresPos_2:%03d\n",  dxl1_present_position,   dxl2_present_position);
+//        printf("Presvel_1:%03d\t   PresVel_2:%03d\n",  dxl1_present_velocity,   dxl2_present_velocity);
 
     }while((abs(dxl1_goal_position[index] - dxl1_present_position) > DXL_MOVING_STATUS_THRESHOLD) || (abs(dxl2_goal_position[index] - dxl2_present_position) > DXL_MOVING_STATUS_THRESHOLD));
 

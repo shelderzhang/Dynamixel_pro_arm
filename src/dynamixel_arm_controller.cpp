@@ -12,18 +12,7 @@
 
 using namespace dynamixel;
 
-void*
-read_armstatus_thread(void *args)
-{
-    // takes an autopilot object argument
-	DynamixelController *dynamixelController = (DynamixelController *)args;
 
-    // run the object's read thread
-	dynamixelController->read_armstatus_thread_main();
-
-
-    return NULL;
-}
 
 DynamixelController::DynamixelController(PortHandler *port, PacketHandler *ph, GroupSyncWrite *wr, GroupSyncRead *rd)
 {
@@ -74,7 +63,7 @@ DynamixelController::DynamixelController(PortHandler *port, PacketHandler *ph, G
 	  int result = pthread_mutex_init(&joint_status_lock, NULL);
 	  if ( result != 0 )
 	   {
-	       printf("\n ecCytoncommand mutex init failed\n");
+	       printf("\n DynamixelController joint_status_lock mutex init failed\n");
 	   }
 
 
@@ -343,39 +332,6 @@ int DynamixelController::torque_disable()
 	  return 0;
 }
 
-void DynamixelController::read_armstatus_thread_main()
-{
-
-   printf("\n Dynamixel_pro read_armstatus_thread is running! \n");
-
-   while ( !time_to_exit )
-   {
-	   pthread_mutex_lock(&joint_status_lock);
-	   get_status();
-	   pthread_mutex_unlock(&joint_status_lock);
 
 
-	   usleep(1000);
-   }
-}
 
-void DynamixelController::start()
-{
-
-    if (pthread_create( &read_armstatus_tid, NULL, &read_armstatus_thread, this ))
-    {
-        printf("\n error:fail to create read_armstatus_thread \n");
-    }
-}
-
-void DynamixelController::stop()
-{
-
-    printf("Close read_armstatus_thread \n");
-
-    // signal exit
-    time_to_exit = true;
-    // wait for exit
-    pthread_join(read_armstatus_tid ,NULL);
-
-}

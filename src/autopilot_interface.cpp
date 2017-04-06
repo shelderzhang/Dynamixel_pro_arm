@@ -88,7 +88,7 @@ Autopilot_Interface(Serial_Port *serial_port_)
     pthread_mutex_init(&endeff_lock, NULL);
     pthread_mutex_init(&joints_lock, NULL);
 	serial_port = serial_port_; // serial port management object
-
+	count  = 0;
 }
 
 Autopilot_Interface::
@@ -131,13 +131,13 @@ read_messages()
 			{
                 case MAVLINK_MSG_ID_TARGET_ENDEFF_FRAME:
                 {
-                   // printf("MAVLINK_MSG_ID_TARGET_ENDEFF_FRAME\n");
+                  printf("MAVLINK_MSG_ID_TARGET_ENDEFF_FRAME\n");
                 pthread_mutex_lock(&target_lock);
                 mavlink_msg_target_endeff_frame_decode(&message, &target_endeff_frame);
                 pthread_mutex_unlock(&target_lock);
-                printf("\n recive px4 arm_enabel: %d \n",target_endeff_frame.arm_enable);
+//                printf("\n recive px4 arm_enabel: %d \n",target_endeff_frame.arm_enable);
 
-                printf("\n px4 target:\n x= %f;  y = %f; z= %f  \n",target_endeff_frame.x,target_endeff_frame.y,target_endeff_frame.z);
+//                printf("\n px4 target:\n x= %f;  y = %f; z= %f  \n",target_endeff_frame.x,target_endeff_frame.y,target_endeff_frame.z);
                     break;
                 }
 				default:
@@ -163,6 +163,7 @@ Autopilot_Interface::
 write_message(mavlink_message_t message)
 {
 	// do the write
+
 	int len = serial_port->write_message(message);
 
 	// Done!
@@ -222,7 +223,6 @@ write_joint_status()
     // --------------------------------------------------------------------------
     //   ENCODE
     // --------------------------------------------------------------------------
-
     mavlink_message_t message;
     mavlink_msg_manipulator_joint_status_encode(system_id, companion_id, &message, &jonit_status);
 
@@ -235,7 +235,7 @@ write_joint_status()
 
     // check the write
     if ( len <= 0 )
-        fprintf(stderr,"WARNING: could not send POSITION_TARGET_LOCAL_NED \n");
+        fprintf(stderr,"WARNING: could not send manipulator status \n");
     //	else
     //		printf("%lu POSITION_TARGET  = [ %f , %f , %f ] \n", write_count, position_target.x, position_target.y, position_target.z);
 
@@ -408,11 +408,15 @@ write_thread(void)
 	while ( !time_to_exit )
 	{
 
-  //      printf("write_joint_status write: \n joint_posi_2=%f; joint_posi_3=%f;\n",mani_joints.joint_posi_2 ,mani_joints.joint_posi_3);
-        usleep(10000);   // Stream at 100Hz
-        write_endeff_frame_status();
+//        printf("write_joint_status write: \n joint_posi_1=%f; joint_posi_2=%f;\n",mani_joints.joint_posi_1 ,mani_joints.joint_posi_2);
+        usleep(1000);   // Stream at 1000Hz
+//        without endeff_frame_status
+//        write_endeff_frame_status();
         write_joint_status();
+//        printf("count:%d \n",count++);
+
 	}
+
 
 	// signal end
 	writing_status = false;

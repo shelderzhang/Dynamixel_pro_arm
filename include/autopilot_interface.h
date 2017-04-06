@@ -132,7 +132,7 @@ private:
 	Serial_Port *serial_port;
 
 	bool time_to_exit;
-
+	int count;
 	void read_thread();
 	void write_thread(void);
 

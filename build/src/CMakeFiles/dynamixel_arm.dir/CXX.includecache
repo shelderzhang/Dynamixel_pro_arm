@@ -781,6 +781,8 @@ stdlib.h
 -
 stdio.h
 -
+math.h
+-
 dynamixel_arm_controller.h
 /home/gyz/src/Dynamixel_pro_arm/src/dynamixel_arm_controller.h
 autopilot_interface.h
