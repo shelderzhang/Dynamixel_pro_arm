@@ -43,13 +43,15 @@
 
 #define DXL_MINIMUM_POSITION_VALUE      -131584             // Dynamixel will rotate between this value
 #define DXL_MAXIMUM_POSITION_VALUE      131584              // and this value (note that the Dynamixel would not move when the position value is out of movable range. Check e-manual about the range of the Dynamixel you use.)
+
 #define DXL_MOVING_STATUS_THRESHOLD     100                  // Dynamixel moving status threshold
 
 #define ESC_ASCII_VALUE                 0x1b
 int getch();
 int kbhit(void);
 
-const float PI = 3.1415926535898;
+const double PI = 3.1415926535898;
+const double RADS_TO_DXL = 131584/PI;
 
 int main()
 {
@@ -72,6 +74,16 @@ int main()
   dynamixel::DynamixelController dynamixelController(portHandler, packetHandler, &groupSyncWrite, &groupSyncRead);
 
   int index = 0;
+  double traj_coeff1[6];
+  double traj_coeff2[6];
+  double dxl1_min_gpos = -PI/4;
+  double dxl1_max_gpos = -PI/4;
+  double dxl2_min_gpos = -PI/2;
+  double dxl2_max_gpos = -PI/2;
+  double T = 3;
+  traj_generator(T,traj_coeff1,dxl1_min_gpos,dxl1_min_gpos);
+  traj_generator(T,traj_coeff2,dxl2_min_gpos,dxl2_min_gpos);
+
 //  int dxl1_goal_position[2] = {-13000, 13000};
 //  int dxl2_goal_position[2] = {-52000, 52000}; // Goal position
 //  int dxl1_goal_velocity[2] = {-1000, 1000};
@@ -144,7 +156,9 @@ int main()
   // Add parameter storage for Dynamixel#1 present position value
   dynamixelController.arm_initial();
 
-
+  dynamixelController.dxl1_pos = dxl1_min_gpos;
+  dynamixelController.dxl2_pos = dxl2_min_gpos;
+  dynamixelController.set_targets();
 
   while(1)
   {

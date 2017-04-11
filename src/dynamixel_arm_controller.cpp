@@ -8,11 +8,22 @@
 
 #include <algorithm>
 #include "dynamixel_arm_controller.h"
+#include <math.h>
 
 
 using namespace dynamixel;
 
+int  traj_generator(double T, double *coeff, double i_pos, double f_pos)
+{
+	coeff[0] = 0;
+	coeff[1] = 0;
+	coeff[2] = 0;
+	coeff[3] = (20*(f_pos-i_pos))/(2*pow(T,3));
+	coeff[4] = (30*(f_pos-i_pos))/(2*pow(T,4));
+	coeff[5] = (12*(f_pos-i_pos))/(2*pow(T,5));
+	return 0;
 
+}
 
 DynamixelController::DynamixelController(PortHandler *port, PacketHandler *ph, GroupSyncWrite *wr, GroupSyncRead *rd)
 {

@@ -15,17 +15,17 @@ namespace dynamixel
 
 {
 	void* read_armstatus_thread(void*args);
-
+	int traj_generator(float T, float *coeff, float i_pos, float f_pos);
 class WINDECLSPEC DynamixelController
 {
 	 public:
   DynamixelController(PortHandler *port, PacketHandler *ph, GroupSyncWrite *wr,  GroupSyncRead *rd);
   ~DynamixelController();
 
-  int dxl1_pos;
-  int dxl2_pos;
-  int dxl1_vel;
-  int dxl2_vel;
+  int32_t dxl1_pos;
+  int32_t dxl2_pos;
+  int32_t dxl1_vel;
+  int32_t dxl2_vel;
   int32_t dxl1_pre_pos;
   int32_t dxl2_pre_pos;
   int32_t dxl1_pre_vel;
@@ -74,6 +74,8 @@ class WINDECLSPEC DynamixelController
   uint16_t LEN_PRO_PRESENT_POSITION;
   uint16_t LEN_PRO_PRESENT_VELOCITY;
   uint16_t LEN_PRO_PRESENT_CURRENT;
+
+
 
   // Default setting
   int DXL1_ID;                   // Dynamixel#1 ID: 1
