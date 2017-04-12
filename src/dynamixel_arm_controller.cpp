@@ -13,17 +13,7 @@
 
 using namespace dynamixel;
 
-int  traj_generator(double T, double *coeff, double i_pos, double f_pos)
-{
-	coeff[0] = 0;
-	coeff[1] = 0;
-	coeff[2] = 0;
-	coeff[3] = (20*(f_pos-i_pos))/(2*pow(T,3));
-	coeff[4] = (30*(f_pos-i_pos))/(2*pow(T,4));
-	coeff[5] = (12*(f_pos-i_pos))/(2*pow(T,5));
-	return 0;
 
-}
 
 DynamixelController::DynamixelController(PortHandler *port, PacketHandler *ph, GroupSyncWrite *wr, GroupSyncRead *rd)
 {
@@ -145,19 +135,19 @@ int DynamixelController::indirectdata_parameter(int DXL_ID)
 	    }
 
 	}
-	for (i = 0; i<4;i++ )
-	{
-		dxl_comm_result = ph_hd->write2ByteTxRx(port_hd, DXL_ID, (ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 8+2*i), (ADDR_PRO_GOAL_VELOCITY + i), &dxl_error);
-		if (dxl_comm_result != COMM_SUCCESS)
-		{
-		    ph_hd->printTxRxResult(dxl_comm_result);
-		}
-	    else if (dxl_error != 0)
-		{
-			 ph_hd->printRxPacketError(dxl_error);
-	    }
-
-	}
+//	for (i = 0; i<4;i++ )
+//	{
+//		dxl_comm_result = ph_hd->write2ByteTxRx(port_hd, DXL_ID, (ADDR_PRO_INDIRECTADDRESS_FOR_WRITE + 8+2*i), (ADDR_PRO_GOAL_VELOCITY + i), &dxl_error);
+//		if (dxl_comm_result != COMM_SUCCESS)
+//		{
+//		    ph_hd->printTxRxResult(dxl_comm_result);
+//		}
+//	    else if (dxl_error != 0)
+//		{
+//			 ph_hd->printRxPacketError(dxl_error);
+//	    }
+//
+//	}
 
 	for (i = 0; i<4;i++ )
 	{
@@ -219,19 +209,19 @@ int DynamixelController::set_targets()
 	    dxl1_param_indirect_data_for_write[1] = DXL_HIBYTE(DXL_LOWORD(dxl1_pos));
 	    dxl1_param_indirect_data_for_write[2] = DXL_LOBYTE(DXL_HIWORD(dxl1_pos));
 	    dxl1_param_indirect_data_for_write[3] = DXL_HIBYTE(DXL_HIWORD(dxl1_pos));
-	    dxl1_param_indirect_data_for_write[4] = DXL_LOBYTE(DXL_LOWORD(dxl1_vel));
-	    dxl1_param_indirect_data_for_write[5] = DXL_HIBYTE(DXL_LOWORD(dxl1_vel));
-	    dxl1_param_indirect_data_for_write[6] = DXL_LOBYTE(DXL_HIWORD(dxl1_vel));
-	    dxl1_param_indirect_data_for_write[7] = DXL_HIBYTE(DXL_HIWORD(dxl1_vel));
+//	    dxl1_param_indirect_data_for_write[4] = DXL_LOBYTE(DXL_LOWORD(dxl1_vel));
+//	    dxl1_param_indirect_data_for_write[5] = DXL_HIBYTE(DXL_LOWORD(dxl1_vel));
+//	    dxl1_param_indirect_data_for_write[6] = DXL_LOBYTE(DXL_HIWORD(dxl1_vel));
+//	    dxl1_param_indirect_data_for_write[7] = DXL_HIBYTE(DXL_HIWORD(dxl1_vel));
 
 	    dxl2_param_indirect_data_for_write[0] = DXL_LOBYTE(DXL_LOWORD(dxl2_pos));
 	    dxl2_param_indirect_data_for_write[1] = DXL_HIBYTE(DXL_LOWORD(dxl2_pos));
 	    dxl2_param_indirect_data_for_write[2] = DXL_LOBYTE(DXL_HIWORD(dxl2_pos));
 	    dxl2_param_indirect_data_for_write[3] = DXL_HIBYTE(DXL_HIWORD(dxl2_pos));
-	    dxl2_param_indirect_data_for_write[4] = DXL_LOBYTE(DXL_LOWORD(dxl2_vel));
-	    dxl2_param_indirect_data_for_write[5] = DXL_HIBYTE(DXL_LOWORD(dxl2_vel));
-	    dxl2_param_indirect_data_for_write[6] = DXL_LOBYTE(DXL_HIWORD(dxl2_vel));
-	    dxl2_param_indirect_data_for_write[7] = DXL_HIBYTE(DXL_HIWORD(dxl2_vel));
+//	    dxl2_param_indirect_data_for_write[4] = DXL_LOBYTE(DXL_LOWORD(dxl2_vel));
+//	    dxl2_param_indirect_data_for_write[5] = DXL_HIBYTE(DXL_LOWORD(dxl2_vel));
+//	    dxl2_param_indirect_data_for_write[6] = DXL_LOBYTE(DXL_HIWORD(dxl2_vel));
+//	    dxl2_param_indirect_data_for_write[7] = DXL_HIBYTE(DXL_HIWORD(dxl2_vel));
 
 	    // Add Dynamixel#1 goal position value to the Syncwrite storage
 	    dxl_addparam_result = group_write->addParam(DXL1_ID, dxl1_param_indirect_data_for_write);

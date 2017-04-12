@@ -15,7 +15,7 @@ namespace dynamixel
 
 {
 	void* read_armstatus_thread(void*args);
-	int traj_generator(float T, float *coeff, float i_pos, float f_pos);
+
 class WINDECLSPEC DynamixelController
 {
 	 public:

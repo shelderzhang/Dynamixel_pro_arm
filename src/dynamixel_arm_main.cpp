@@ -18,6 +18,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include <sys/time.h>
+
+
 
 #include "dynamixel_arm_controller.h"                             // Uses Dynamixel SDK library
 #include "autopilot_interface.h"
@@ -49,10 +52,12 @@
 #define ESC_ASCII_VALUE                 0x1b
 int getch();
 int kbhit(void);
+long getCurrentTime();
+void traj_generator(double T, double *coeff, double i_pos, double f_pos);
 
 const double PI = 3.1415926535898;
 const double RADS_TO_DXL = 131584/PI;
-
+const double DXL_TO_RADS = PI/131584;
 int main()
 {
   // Initialize PortHandler instance
@@ -76,13 +81,16 @@ int main()
   int index = 0;
   double traj_coeff1[6];
   double traj_coeff2[6];
-  double dxl1_min_gpos = -PI/4;
-  double dxl1_max_gpos = -PI/4;
-  double dxl2_min_gpos = -PI/2;
-  double dxl2_max_gpos = -PI/2;
+  double dxl1_igpos[2] = {-PI/4, PI/4};
+  double dxl1_fgpos[2] = {PI/4, -PI/4};
+  double dxl2_igpos[2] = {-PI/2, PI/2};
+  double dxl2_fgpos[2] = {PI/2, -PI/2};
   double T = 3;
-  traj_generator(T,traj_coeff1,dxl1_min_gpos,dxl1_min_gpos);
-  traj_generator(T,traj_coeff2,dxl2_min_gpos,dxl2_min_gpos);
+  double time_stamp;
+  double current_time;
+  bool time_flag;
+  double t;
+
 
 //  int dxl1_goal_position[2] = {-13000, 13000};
 //  int dxl2_goal_position[2] = {-52000, 52000}; // Goal position
@@ -155,10 +163,17 @@ int main()
   autopilot_interface.start();
   // Add parameter storage for Dynamixel#1 present position value
   dynamixelController.arm_initial();
-
-  dynamixelController.dxl1_pos = dxl1_min_gpos;
-  dynamixelController.dxl2_pos = dxl2_min_gpos;
-  dynamixelController.set_targets();
+  double dxl1_init_pos;
+  double dxl2_init_pos;
+  dynamixelController.get_status();
+  dxl1_init_pos =DXL_TO_RADS*dynamixelController.dxl1_pre_pos;
+  dxl2_init_pos = DXL_TO_RADS*dynamixelController.dxl2_pre_pos;
+  traj_generator(T, traj_coeff1, dxl1_init_pos, dxl1_igpos[index]);
+  traj_generator(T, traj_coeff2, dxl1_init_pos, dxl2_igpos[index]);
+  sleep(3);
+  t=0;
+  current_time = getCurrentTime()/1.0e6f;
+  time_stamp = current_time;
 
   while(1)
   {
@@ -166,43 +181,52 @@ int main()
     if (getch() == ESC_ASCII_VALUE)
       break;
     // set pos and vel
-    dynamixelController.dxl1_pos = dxl1_goal_position[index];
-    dynamixelController.dxl2_pos = dxl2_goal_position[index];
-    dynamixelController.dxl1_vel = dxl1_goal_velocity[index];
-    dynamixelController.dxl2_vel = dxl2_goal_velocity[index];
-    dynamixelController.set_targets();
+    sleep(2);
 
-    do
-    {
-   	//get pos and vel
+    	current_time = getCurrentTime()/1.0e6f;
+       if (current_time-time_stamp >= 0.02f)
+       {
+    	   time_stamp = current_time;
+    	   t = t +0.02;
+    	   dynamixelController.dxl1_pos = RADS_TO_DXL*(traj_coeff1[0]+traj_coeff1[1]*t+traj_coeff1[2]*t*t +\
+    	           						  traj_coeff1[3]*pow(t,3)+traj_coeff1[4]*pow(t,4)+traj_coeff1[5]*pow(t,5));
+    	   dynamixelController.dxl2_pos = RADS_TO_DXL*(traj_coeff1[0]+traj_coeff1[1]*t+traj_coeff1[2]*t*t +\
+    	       			   	   	   	   	  traj_coeff1[3]*pow(t,3)+traj_coeff1[4]*pow(t,4)+traj_coeff1[5]*pow(t,5));
 
-    	dynamixelController.get_status();
-    	dxl1_present_position = dynamixelController.dxl1_pre_pos;
-		dxl2_present_position = dynamixelController.dxl2_pre_pos;
-		dxl1_present_velocity = dynamixelController.dxl1_pre_vel;
-		dxl2_present_velocity = dynamixelController.dxl2_pre_vel;
+    	   dynamixelController.set_targets();
+    	   if (t >= T)
+    	   {
+    		   t = 0;
+    		   if (index == 0)
+    		    {
+    		      index = 1;
+    		    }
+    		    else
+    		    {
+    		      index = 0;
+    		    }
+    		   traj_generator(T, traj_coeff1, dxl1_igpos[index],dxl1_fgpos[index]);
+    		   traj_generator(T, traj_coeff2, dxl2_igpos[index],dxl2_fgpos[index]);
+    	   }
+       }
 
-    	pthread_mutex_lock(&(autopilot_interface.joints_lock));
-    	autopilot_interface.mani_joints.joint_posi_1 = dxl1_present_position;
-    	autopilot_interface.mani_joints.joint_posi_2 = dxl2_present_position;
-    	autopilot_interface.mani_joints.joint_rate_1 = dxl1_present_velocity;
-    	autopilot_interface.mani_joints.joint_rate_2 = dxl2_present_velocity;
-    	pthread_mutex_unlock(&(autopilot_interface.joints_lock));
+       dynamixelController.get_status();
+       dxl1_present_position = dynamixelController.dxl1_pre_pos;
+       dxl2_present_position = dynamixelController.dxl2_pre_pos;
+       dxl1_present_velocity = dynamixelController.dxl1_pre_vel;
+       dxl2_present_velocity = dynamixelController.dxl2_pre_vel;
+       printf("PresPos_1:%03d\t   PresPos_2:%03d\n",  dxl1_present_position,   dxl2_present_position);
+       printf("Presvel_1:%03d\t   PresVel_2:%03d\n",  dxl1_present_velocity,   dxl2_present_velocity);
 
-//        printf("PresPos_1:%03d\t   PresPos_2:%03d\n",  dxl1_present_position,   dxl2_present_position);
-//        printf("Presvel_1:%03d\t   PresVel_2:%03d\n",  dxl1_present_velocity,   dxl2_present_velocity);
+       pthread_mutex_lock(&(autopilot_interface.joints_lock));
+       autopilot_interface.mani_joints.joint_posi_1 = dxl1_present_position;
+       autopilot_interface.mani_joints.joint_posi_2 = dxl2_present_position;
+       autopilot_interface.mani_joints.joint_rate_1 = dxl1_present_velocity;
+       autopilot_interface.mani_joints.joint_rate_2 = dxl2_present_velocity;
+       pthread_mutex_unlock(&(autopilot_interface.joints_lock));
 
-    }while((abs(dxl1_goal_position[index] - dxl1_present_position) > DXL_MOVING_STATUS_THRESHOLD) || (abs(dxl2_goal_position[index] - dxl2_present_position) > DXL_MOVING_STATUS_THRESHOLD));
 
-    // Change goal position
-    if (index == 0)
-    {
-      index = 1;
-    }
-    else
-    {
-      index = 0;
-    }
+
   }
   // --------------------------------------------------------------------------
   //   Join threads of serial port
@@ -265,5 +289,20 @@ int kbhit(void)
   return _kbhit();
 #endif
 }
+void  traj_generator(double T, double *coeff, double i_pos, double f_pos)
+{
+	coeff[0] = 0;
+	coeff[1] = 0;
+	coeff[2] = 0;
+	coeff[3] = (20*(f_pos-i_pos))/(2*pow(T,3));
+	coeff[4] = (30*(f_pos-i_pos))/(2*pow(T,4));
+	coeff[5] = (12*(f_pos-i_pos))/(2*pow(T,5));
 
 
+}
+long getCurrentTime()
+{
+   struct timeval tv;
+   gettimeofday(&tv,NULL);
+   return tv.tv_sec * 1000 + tv.tv_usec / 1000;
+}
