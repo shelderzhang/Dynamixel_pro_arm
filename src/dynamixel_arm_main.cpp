@@ -30,10 +30,10 @@
 // Control table address is different in Dynamixel model
 
 #define ADDR_PRO_INDIRECTDATA_FOR_WRITE         634
-#define ADDR_PRO_INDIRECTDATA_FOR_READ          642
+#define ADDR_PRO_INDIRECTDATA_FOR_READ          638
 
 // Data Byte Length
-#define LEN_PRO_INDIRECTDATA_FOR_WRITE          8
+#define LEN_PRO_INDIRECTDATA_FOR_WRITE          4
 #define LEN_PRO_INDIRECTDATA_FOR_READ           8
 
 #define BAUDRATE                        115200
@@ -81,27 +81,18 @@ int main()
   int index = 0;
   double traj_coeff1[6];
   double traj_coeff2[6];
-  double dxl1_igpos[2] = {-PI/4, PI/4};
-  double dxl1_fgpos[2] = {PI/4, -PI/4};
-  double dxl2_igpos[2] = {-PI/2, PI/2};
-  double dxl2_fgpos[2] = {PI/2, -PI/2};
+  double dxl1_igpos[2] = {-PI/6, PI/6};
+  double dxl1_fgpos[2] = {PI/6, -PI/6};
+  double dxl2_igpos[2] = {-PI/3, PI/3};
+  double dxl2_fgpos[2] = {PI/3, -PI/3};
   double T = 3;
-  double time_stamp;
-  double current_time;
-  bool time_flag;
+  long time_stamp;
+  long current_time;
   double t;
 
-
-//  int dxl1_goal_position[2] = {-13000, 13000};
-//  int dxl2_goal_position[2] = {-52000, 52000}; // Goal position
-//  int dxl1_goal_velocity[2] = {-1000, 1000};
-//  int dxl2_goal_velocity[2] = {-500, 500}; // Goal position
-  int dxl1_goal_position[2] = {-23000, 23000};
-  int dxl2_goal_position[2] = {-62000, 62000}; // Goal position
-  int dxl1_goal_velocity[2] = {-5000, 5000};
-  int dxl2_goal_velocity[2] = {-8000, 8000}; // Goal position
   int32_t dxl1_present_position = 0, dxl2_present_position = 0;              // Present position
   int32_t dxl1_present_velocity = 0, dxl2_present_velocity = 0;
+  int32_t dxl1_gpos=0, dxl2_gpos, dxl1_gvel=0, dxl2_gvel=0;
 
   // Open port
   if (portHandler->openPort())
@@ -163,39 +154,49 @@ int main()
   autopilot_interface.start();
   // Add parameter storage for Dynamixel#1 present position value
   dynamixelController.arm_initial();
+  sleep(1);
   double dxl1_init_pos;
   double dxl2_init_pos;
   dynamixelController.get_status();
   dxl1_init_pos =DXL_TO_RADS*dynamixelController.dxl1_pre_pos;
   dxl2_init_pos = DXL_TO_RADS*dynamixelController.dxl2_pre_pos;
-  traj_generator(T, traj_coeff1, dxl1_init_pos, dxl1_igpos[index]);
-  traj_generator(T, traj_coeff2, dxl1_init_pos, dxl2_igpos[index]);
-  sleep(3);
+
+  printf("dxl1_init_pos:%f\t   dxl2_init_pos:%f\n",  dxl1_init_pos,  dxl2_init_pos);
+
+
+  traj_generator(T, traj_coeff1, dxl1_init_pos, dxl1_fgpos[index]);
+  traj_generator(T, traj_coeff2, dxl1_init_pos, dxl2_fgpos[index]);
+  sleep(2);
+
   t=0;
-  current_time = getCurrentTime()/1.0e6f;
+  current_time = getCurrentTime();
   time_stamp = current_time;
 
   while(1)
   {
-    printf("Press any key to continue! (or press ESC to quit!)\n");
-    if (getch() == ESC_ASCII_VALUE)
-      break;
-    // set pos and vel
-    sleep(2);
+    	current_time = getCurrentTime();
 
-    	current_time = getCurrentTime()/1.0e6f;
-       if (current_time-time_stamp >= 0.02f)
+       if (current_time-time_stamp >= 10)
        {
     	   time_stamp = current_time;
-    	   t = t +0.02;
-    	   dynamixelController.dxl1_pos = RADS_TO_DXL*(traj_coeff1[0]+traj_coeff1[1]*t+traj_coeff1[2]*t*t +\
+    	   t = t +0.01;
+    	   dxl1_gpos=dynamixelController.dxl1_pos = RADS_TO_DXL*(traj_coeff1[0]+traj_coeff1[1]*t+traj_coeff1[2]*t*t +\
     	           						  traj_coeff1[3]*pow(t,3)+traj_coeff1[4]*pow(t,4)+traj_coeff1[5]*pow(t,5));
-    	   dynamixelController.dxl2_pos = RADS_TO_DXL*(traj_coeff1[0]+traj_coeff1[1]*t+traj_coeff1[2]*t*t +\
-    	       			   	   	   	   	  traj_coeff1[3]*pow(t,3)+traj_coeff1[4]*pow(t,4)+traj_coeff1[5]*pow(t,5));
+    	   dxl2_gpos=dynamixelController.dxl2_pos = RADS_TO_DXL*(traj_coeff2[0]+traj_coeff2[1]*t+traj_coeff2[2]*t*t +\
+    	       			   	   	   	   	  traj_coeff2[3]*pow(t,3)+traj_coeff2[4]*pow(t,4)+traj_coeff2[5]*pow(t,5));
+//    	   printf("GOAL_Pos_1:%f\t   GOAL_Pos_2:%f\n",  dynamixelController.dxl1_pos*DXL_TO_RADS,   dynamixelController.dxl2_pos*DXL_TO_RADS);
+    	   dxl1_gvel = RADS_TO_DXL*(traj_coeff1[1]+2*traj_coeff1[2]*t +\
+					  3*traj_coeff1[3]*pow(t,2)+4*traj_coeff1[4]*pow(t,3)+5*traj_coeff1[5]*pow(t,4));
 
+    	   dxl2_gvel = RADS_TO_DXL*(traj_coeff2[1]+2*traj_coeff2[2]*t +\
+					  3*traj_coeff2[3]*pow(t,2)+4*traj_coeff2[4]*pow(t,3)+5*traj_coeff2[5]*pow(t,4));
     	   dynamixelController.set_targets();
     	   if (t >= T)
     	   {
+    		    printf("Press any key to continue! (or press ESC to quit!)\n");
+    		    if (getch() == ESC_ASCII_VALUE)
+    		      break;
+
     		   t = 0;
     		   if (index == 0)
     		    {
@@ -206,6 +207,7 @@ int main()
     		      index = 0;
     		    }
     		   traj_generator(T, traj_coeff1, dxl1_igpos[index],dxl1_fgpos[index]);
+
     		   traj_generator(T, traj_coeff2, dxl2_igpos[index],dxl2_fgpos[index]);
     	   }
        }
@@ -215,14 +217,19 @@ int main()
        dxl2_present_position = dynamixelController.dxl2_pre_pos;
        dxl1_present_velocity = dynamixelController.dxl1_pre_vel;
        dxl2_present_velocity = dynamixelController.dxl2_pre_vel;
-       printf("PresPos_1:%03d\t   PresPos_2:%03d\n",  dxl1_present_position,   dxl2_present_position);
-       printf("Presvel_1:%03d\t   PresVel_2:%03d\n",  dxl1_present_velocity,   dxl2_present_velocity);
+//       printf("PresPos_1:%03d\t   PresPos_2:%03d\n",  dxl1_present_position,   dxl2_present_position);
+//       printf("Presvel_1:%03d\t   PresVel_2:%03d\n",  dxl1_present_velocity,   dxl2_present_velocity);
 
        pthread_mutex_lock(&(autopilot_interface.joints_lock));
        autopilot_interface.mani_joints.joint_posi_1 = dxl1_present_position;
        autopilot_interface.mani_joints.joint_posi_2 = dxl2_present_position;
+       autopilot_interface.mani_joints.joint_posi_3 = dxl1_gpos;
+       autopilot_interface.mani_joints.joint_posi_4 = dxl2_gpos;
+
        autopilot_interface.mani_joints.joint_rate_1 = dxl1_present_velocity;
        autopilot_interface.mani_joints.joint_rate_2 = dxl2_present_velocity;
+       autopilot_interface.mani_joints.joint_rate_3 = dxl1_gvel;
+       autopilot_interface.mani_joints.joint_rate_4 = dxl2_gvel;
        pthread_mutex_unlock(&(autopilot_interface.joints_lock));
 
 
@@ -291,11 +298,11 @@ int kbhit(void)
 }
 void  traj_generator(double T, double *coeff, double i_pos, double f_pos)
 {
-	coeff[0] = 0;
+	coeff[0] = i_pos;
 	coeff[1] = 0;
 	coeff[2] = 0;
 	coeff[3] = (20*(f_pos-i_pos))/(2*pow(T,3));
-	coeff[4] = (30*(f_pos-i_pos))/(2*pow(T,4));
+	coeff[4] = -(30*(f_pos-i_pos))/(2*pow(T,4));
 	coeff[5] = (12*(f_pos-i_pos))/(2*pow(T,5));
 
 

@@ -29,8 +29,8 @@ DynamixelController::DynamixelController(PortHandler *port, PacketHandler *ph, G
 
 	  dxl_error = 0;                          // Dynamixel error
 	  ADDR_PRO_INDIRECTADDRESS_FOR_WRITE = 49;                  // EEPROM region
-	  ADDR_PRO_INDIRECTADDRESS_FOR_READ = 65;                  // EEPROM region
-	  ADDR_PRO_INDIRECTDATA = 642;
+	  ADDR_PRO_INDIRECTADDRESS_FOR_READ = 57;                  // EEPROM region
+	  ADDR_PRO_INDIRECTDATA = 638;
 
 	  ADDR_PRO_TORQUE_ENABLE = 562;                 // Control table address is different in Dynamixel model
 	  ADDR_PRO_GOAL_POSITION = 596;
