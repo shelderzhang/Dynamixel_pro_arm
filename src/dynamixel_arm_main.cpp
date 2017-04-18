@@ -85,7 +85,7 @@ int main()
   double dxl1_fgpos[2] = {PI/6, -PI/6};
   double dxl2_igpos[2] = {-PI/3, PI/3};
   double dxl2_fgpos[2] = {PI/3, -PI/3};
-  double T = 3;
+  double T = 3.5;
   long time_stamp;
   long current_time;
   double t;
