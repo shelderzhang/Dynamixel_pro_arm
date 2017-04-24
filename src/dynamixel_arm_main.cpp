@@ -83,8 +83,8 @@ int main()
   double traj_coeff2[6];
   double dxl1_igpos[2] = {-PI/6, PI/6};
   double dxl1_fgpos[2] = {PI/6, -PI/6};
-  double dxl2_igpos[2] = {-PI/3, PI/3};
-  double dxl2_fgpos[2] = {PI/3, -PI/3};
+  double dxl2_igpos[2] = {-PI/4, PI/4};
+  double dxl2_fgpos[2] = {PI/4, -PI/4};
   double T = 3.5;
   long time_stamp;
   long current_time;
