@@ -50,6 +50,13 @@
 #define DXL_MOVING_STATUS_THRESHOLD     100                  // Dynamixel moving status threshold
 
 #define ESC_ASCII_VALUE                 0x1b
+#define KEY1_ASCII_VALUE                 0x31
+#define KEY2_ASCII_VALUE                 0x32
+#define KEY3_ASCII_VALUE                 0x33
+#define KEY4_ASCII_VALUE                 0x34
+#define KEY5_ASCII_VALUE                 0x35
+#define KEY6_ASCII_VALUE                 0x36
+
 int getch();
 int kbhit(void);
 long getCurrentTime();
@@ -58,6 +65,7 @@ void traj_generator(double T, double *coeff, double i_pos, double f_pos);
 const double PI = 3.1415926535898;
 const double RADS_TO_DXL = 131584/PI;
 const double DXL_TO_RADS = PI/131584;
+const double DXLVEL_TO_RADS = 2*PI/60/257;
 int main()
 {
   // Initialize PortHandler instance
@@ -81,19 +89,19 @@ int main()
   int index = 0;
   double traj_coeff1[6];
   double traj_coeff2[6];
-  double dxl1_igpos[2] = {-PI/6, PI/6};
+  double dxl1_igpos;
   double dxl1_fgpos[2] = {PI/6, -PI/6};
-  double dxl2_igpos[2] = {-PI/4, PI/4};
+  double dxl2_igpos;
   double dxl2_fgpos[2] = {PI/4, -PI/4};
-  double T = 3.5;
+  double T = 2;
   long time_stamp;
   long current_time;
   double t;
-
-  int32_t dxl1_present_position = 0, dxl2_present_position = 0;              // Present position
-  int32_t dxl1_present_velocity = 0, dxl2_present_velocity = 0;
-  int32_t dxl1_gpos=0, dxl2_gpos, dxl1_gvel=0, dxl2_gvel=0;
-
+  int keyword;
+  double dxl1_present_position = 0, dxl2_present_position = 0;              // Present position
+  double dxl1_present_velocity = 0, dxl2_present_velocity = 0;
+  double dxl1_gpos=0, dxl2_gpos, dxl1_gvel=0, dxl2_gvel=0;
+  int model = 0;
   // Open port
   if (portHandler->openPort())
   {
@@ -155,17 +163,16 @@ int main()
   // Add parameter storage for Dynamixel#1 present position value
   dynamixelController.arm_initial();
   sleep(1);
-  double dxl1_init_pos;
-  double dxl2_init_pos;
+
   dynamixelController.get_status();
-  dxl1_init_pos =DXL_TO_RADS*dynamixelController.dxl1_pre_pos;
-  dxl2_init_pos = DXL_TO_RADS*dynamixelController.dxl2_pre_pos;
+  dxl1_igpos =DXL_TO_RADS*dynamixelController.dxl1_pre_pos;
+  dxl2_igpos = DXL_TO_RADS*dynamixelController.dxl2_pre_pos;
 
-  printf("dxl1_init_pos:%f\t   dxl2_init_pos:%f\n",  dxl1_init_pos,  dxl2_init_pos);
+  printf("dxl1_igpos:%f\t   dxl2_igpos:%f\n",  dxl1_igpos,  dxl2_igpos);
 
 
-  traj_generator(T, traj_coeff1, dxl1_init_pos, dxl1_fgpos[index]);
-  traj_generator(T, traj_coeff2, dxl1_init_pos, dxl2_fgpos[index]);
+  traj_generator(T, traj_coeff1, dxl1_igpos, dxl1_fgpos[index]);
+  traj_generator(T, traj_coeff2, dxl2_igpos, dxl2_fgpos[index]);
   sleep(2);
 
   t=0;
@@ -180,22 +187,80 @@ int main()
        {
     	   time_stamp = current_time;
     	   t = t +0.01;
-    	   dxl1_gpos=dynamixelController.dxl1_pos = RADS_TO_DXL*(traj_coeff1[0]+traj_coeff1[1]*t+traj_coeff1[2]*t*t +\
-    	           						  traj_coeff1[3]*pow(t,3)+traj_coeff1[4]*pow(t,4)+traj_coeff1[5]*pow(t,5));
-    	   dxl2_gpos=dynamixelController.dxl2_pos = RADS_TO_DXL*(traj_coeff2[0]+traj_coeff2[1]*t+traj_coeff2[2]*t*t +\
-    	       			   	   	   	   	  traj_coeff2[3]*pow(t,3)+traj_coeff2[4]*pow(t,4)+traj_coeff2[5]*pow(t,5));
+    	   dxl1_gpos = (traj_coeff1[0]+traj_coeff1[1]*t+traj_coeff1[2]*t*t +\
+    	           		traj_coeff1[3]*pow(t,3)+traj_coeff1[4]*pow(t,4)+traj_coeff1[5]*pow(t,5));
+    	   dxl2_gpos = (traj_coeff2[0]+traj_coeff2[1]*t+traj_coeff2[2]*t*t +\
+    	       			traj_coeff2[3]*pow(t,3)+traj_coeff2[4]*pow(t,4)+traj_coeff2[5]*pow(t,5));
 //    	   printf("GOAL_Pos_1:%f\t   GOAL_Pos_2:%f\n",  dynamixelController.dxl1_pos*DXL_TO_RADS,   dynamixelController.dxl2_pos*DXL_TO_RADS);
-    	   dxl1_gvel = RADS_TO_DXL*(traj_coeff1[1]+2*traj_coeff1[2]*t +\
-					  3*traj_coeff1[3]*pow(t,2)+4*traj_coeff1[4]*pow(t,3)+5*traj_coeff1[5]*pow(t,4));
+    	   dxl1_gvel = (traj_coeff1[1]+2*traj_coeff1[2]*t +\
+					   3*traj_coeff1[3]*pow(t,2)+4*traj_coeff1[4]*pow(t,3)+5*traj_coeff1[5]*pow(t,4));
+    	   dxl2_gvel = (traj_coeff2[1]+2*traj_coeff2[2]*t +\
+					   3*traj_coeff2[3]*pow(t,2)+4*traj_coeff2[4]*pow(t,3)+5*traj_coeff2[5]*pow(t,4));
 
-    	   dxl2_gvel = RADS_TO_DXL*(traj_coeff2[1]+2*traj_coeff2[2]*t +\
-					  3*traj_coeff2[3]*pow(t,2)+4*traj_coeff2[4]*pow(t,3)+5*traj_coeff2[5]*pow(t,4));
+    	   dynamixelController.dxl1_pos = RADS_TO_DXL*dxl1_gpos;
+    	   dynamixelController.dxl2_pos = RADS_TO_DXL*dxl2_gpos;
     	   dynamixelController.set_targets();
+
     	   if (t >= T)
     	   {
     		    printf("Press any key to continue! (or press ESC to quit!)\n");
-    		    if (getch() == ESC_ASCII_VALUE)
+//    		    if (getch() == ESC_ASCII_VALUE)
+//    		      break;
+    		    keyword = getch();
+    		    switch(keyword)
+    		    {
+    		      case KEY1_ASCII_VALUE:
+    		    	  printf("key1\n");
+    		    	  model = 1;
+    		    	  dxl1_fgpos[0] = PI/6;
+    		    	  dxl1_fgpos[1] = PI/6;
+    		    	  dxl2_fgpos[0] = PI/6;
+    		    	  dxl2_fgpos[1] = PI/6;
     		      break;
+    		      case KEY2_ASCII_VALUE:
+    		    	  printf("key2\n");
+    		    	  model = 2;
+    		    	  dxl1_fgpos[0] = PI/6;
+    		    	  dxl1_fgpos[1] = PI/6;
+    		    	  dxl2_fgpos[0] = PI/3;
+    		    	  dxl2_fgpos[1] = PI/3;
+
+    		      break;
+    		      case KEY3_ASCII_VALUE:
+    		    	  printf("key3\n");
+    		    	  model = 3;
+    		    	  dxl1_fgpos[0] = PI/6;
+    		    	  dxl1_fgpos[1] = PI/6;
+    		    	  dxl2_fgpos[0] = PI/2;
+    		    	  dxl2_fgpos[1] = PI/2;
+    		      break;
+    		      case KEY4_ASCII_VALUE:
+    		    	  printf("key4\n");
+    		    	  model = 4;
+    		    	  dxl1_fgpos[0] = -PI/6;
+    		    	  dxl1_fgpos[1] = PI/6;
+    		    	  dxl2_fgpos[0] = PI/3;
+    		    	  dxl2_fgpos[1] = PI/3;
+
+    		      break;
+    		      case KEY5_ASCII_VALUE:
+    		    	  printf("key5\n");
+    		    	  model = 5;
+    		    	  dxl1_fgpos[0] = PI/6;
+    		    	  dxl1_fgpos[1] = PI/6;
+    		    	  dxl2_fgpos[0] = -PI/3;
+    		    	  dxl2_fgpos[1] = PI/3;
+    		      break;
+    		      case KEY6_ASCII_VALUE:
+    		    	  printf("key6\n");
+    		    	  model = 6;
+    		    	  dxl1_fgpos[0] = -PI/6;
+    		    	  dxl1_fgpos[1] = PI/6;
+    		    	  dxl2_fgpos[0] = -PI/3;
+    		    	  dxl2_fgpos[1] = PI/3;
+    		      break;
+    		      default: break;
+    		    }
 
     		   t = 0;
     		   if (index == 0)
@@ -206,17 +271,19 @@ int main()
     		    {
     		      index = 0;
     		    }
-    		   traj_generator(T, traj_coeff1, dxl1_igpos[index],dxl1_fgpos[index]);
-
-    		   traj_generator(T, traj_coeff2, dxl2_igpos[index],dxl2_fgpos[index]);
+    		   dynamixelController.get_status();
+    		   dxl1_igpos = DXL_TO_RADS*dynamixelController.dxl1_pre_pos;
+    		   dxl2_igpos = DXL_TO_RADS*dynamixelController.dxl2_pre_pos;
+    		   traj_generator(T, traj_coeff1, dxl1_igpos, dxl1_fgpos[index]);
+    		   traj_generator(T, traj_coeff2, dxl2_igpos, dxl2_fgpos[index]);
     	   }
        }
 
        dynamixelController.get_status();
-       dxl1_present_position = dynamixelController.dxl1_pre_pos;
-       dxl2_present_position = dynamixelController.dxl2_pre_pos;
-       dxl1_present_velocity = dynamixelController.dxl1_pre_vel;
-       dxl2_present_velocity = dynamixelController.dxl2_pre_vel;
+       dxl1_present_position = DXL_TO_RADS*dynamixelController.dxl1_pre_pos;
+       dxl2_present_position = DXL_TO_RADS*dynamixelController.dxl2_pre_pos;
+       dxl1_present_velocity = DXLVEL_TO_RADS*dynamixelController.dxl1_pre_vel;
+       dxl2_present_velocity = DXLVEL_TO_RADS*dynamixelController.dxl2_pre_vel;
 //       printf("PresPos_1:%03d\t   PresPos_2:%03d\n",  dxl1_present_position,   dxl2_present_position);
 //       printf("Presvel_1:%03d\t   PresVel_2:%03d\n",  dxl1_present_velocity,   dxl2_present_velocity);
 
@@ -225,6 +292,7 @@ int main()
        autopilot_interface.mani_joints.joint_posi_2 = dxl2_present_position;
        autopilot_interface.mani_joints.joint_posi_3 = dxl1_gpos;
        autopilot_interface.mani_joints.joint_posi_4 = dxl2_gpos;
+       autopilot_interface.mani_joints.joint_posi_7 = model;
 
        autopilot_interface.mani_joints.joint_rate_1 = dxl1_present_velocity;
        autopilot_interface.mani_joints.joint_rate_2 = dxl2_present_velocity;
