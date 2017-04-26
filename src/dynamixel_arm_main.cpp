@@ -92,7 +92,7 @@ int main()
   double dxl1_igpos;
   double dxl1_fgpos[2] = {PI/6, -PI/6};
   double dxl2_igpos;
-  double dxl2_fgpos[2] = {PI/4, -PI/4};
+  double dxl2_fgpos[2] = {-PI/2.5, PI/2.5};
   double T = 2;
   long time_stamp;
   long current_time;
@@ -168,7 +168,7 @@ int main()
   dxl1_igpos =DXL_TO_RADS*dynamixelController.dxl1_pre_pos;
   dxl2_igpos = DXL_TO_RADS*dynamixelController.dxl2_pre_pos;
 
-  printf("dxl1_igpos:%f\t   dxl2_igpos:%f\n",  dxl1_igpos,  dxl2_igpos);
+//  printf("dxl1_igpos:%f\t   dxl2_igpos:%f\n",  dxl1_igpos,  dxl2_igpos);
 
 
   traj_generator(T, traj_coeff1, dxl1_igpos, dxl1_fgpos[index]);
@@ -181,7 +181,17 @@ int main()
 
   while(1)
   {
-    	current_time = getCurrentTime();
+    	if ((dxl1_igpos > PI)||(dxl1_igpos < -PI))
+    	{
+    		printf("DXLpro1  POS ERROR!\n");
+    		break;
+    	}
+    	if ((dxl2_igpos > PI)||(dxl2_igpos < -PI))
+    	{
+    		printf("DXLpro2  POS ERROR!\n");
+    		break;
+    	}
+	  current_time = getCurrentTime();
 
        if (current_time-time_stamp >= 10)
        {
@@ -191,7 +201,7 @@ int main()
     	           		traj_coeff1[3]*pow(t,3)+traj_coeff1[4]*pow(t,4)+traj_coeff1[5]*pow(t,5));
     	   dxl2_gpos = (traj_coeff2[0]+traj_coeff2[1]*t+traj_coeff2[2]*t*t +\
     	       			traj_coeff2[3]*pow(t,3)+traj_coeff2[4]*pow(t,4)+traj_coeff2[5]*pow(t,5));
-//    	   printf("GOAL_Pos_1:%f\t   GOAL_Pos_2:%f\n",  dynamixelController.dxl1_pos*DXL_TO_RADS,   dynamixelController.dxl2_pos*DXL_TO_RADS);
+//    	   printf("GOAL_Pos_1:%f\t   GOAL_Pos_2:%f\n",  dxl1_gpos,  dxl2_gpos);
     	   dxl1_gvel = (traj_coeff1[1]+2*traj_coeff1[2]*t +\
 					   3*traj_coeff1[3]*pow(t,2)+4*traj_coeff1[4]*pow(t,3)+5*traj_coeff1[5]*pow(t,4));
     	   dxl2_gvel = (traj_coeff2[1]+2*traj_coeff2[2]*t +\
@@ -212,52 +222,55 @@ int main()
     		      case KEY1_ASCII_VALUE:
     		    	  printf("key1\n");
     		    	  model = 1;
-    		    	  dxl1_fgpos[0] = PI/6;
-    		    	  dxl1_fgpos[1] = PI/6;
-    		    	  dxl2_fgpos[0] = PI/6;
-    		    	  dxl2_fgpos[1] = PI/6;
+    		    	  dxl1_fgpos[0] = PI/4;
+    		    	  dxl1_fgpos[1] = PI/4;
+    		    	  dxl2_fgpos[0] = -PI/6;
+    		    	  dxl2_fgpos[1] = -PI/6;
     		      break;
     		      case KEY2_ASCII_VALUE:
     		    	  printf("key2\n");
     		    	  model = 2;
-    		    	  dxl1_fgpos[0] = PI/6;
-    		    	  dxl1_fgpos[1] = PI/6;
-    		    	  dxl2_fgpos[0] = PI/3;
-    		    	  dxl2_fgpos[1] = PI/3;
+    		    	  dxl1_fgpos[0] = PI/4;
+    		    	  dxl1_fgpos[1] = PI/4;
+    		    	  dxl2_fgpos[0] = -PI/3;
+    		    	  dxl2_fgpos[1] = -PI/3;
 
     		      break;
     		      case KEY3_ASCII_VALUE:
     		    	  printf("key3\n");
     		    	  model = 3;
-    		    	  dxl1_fgpos[0] = PI/6;
-    		    	  dxl1_fgpos[1] = PI/6;
-    		    	  dxl2_fgpos[0] = PI/2;
-    		    	  dxl2_fgpos[1] = PI/2;
+    		    	  dxl1_fgpos[0] = PI/4;
+    		    	  dxl1_fgpos[1] = PI/4;
+    		    	  dxl2_fgpos[0] = -PI/2;
+    		    	  dxl2_fgpos[1] = -PI/2;
     		      break;
     		      case KEY4_ASCII_VALUE:
     		    	  printf("key4\n");
     		    	  model = 4;
-    		    	  dxl1_fgpos[0] = -PI/6;
-    		    	  dxl1_fgpos[1] = PI/6;
-    		    	  dxl2_fgpos[0] = PI/3;
-    		    	  dxl2_fgpos[1] = PI/3;
+    		    	  dxl1_fgpos[0] = -PI/4;
+    		    	  dxl1_fgpos[1] = PI/4;
+    		    	  dxl2_fgpos[0] = -PI/3;
+    		    	  dxl2_fgpos[1] = -PI/3;
 
     		      break;
     		      case KEY5_ASCII_VALUE:
     		    	  printf("key5\n");
     		    	  model = 5;
-    		    	  dxl1_fgpos[0] = PI/6;
-    		    	  dxl1_fgpos[1] = PI/6;
+    		    	  dxl1_fgpos[0] = PI/4;
+    		    	  dxl1_fgpos[1] = PI/4;
     		    	  dxl2_fgpos[0] = -PI/3;
     		    	  dxl2_fgpos[1] = PI/3;
     		      break;
     		      case KEY6_ASCII_VALUE:
     		    	  printf("key6\n");
     		    	  model = 6;
-    		    	  dxl1_fgpos[0] = -PI/6;
-    		    	  dxl1_fgpos[1] = PI/6;
+    		    	  dxl1_fgpos[0] = -PI/4;
+    		    	  dxl1_fgpos[1] = PI/4;
     		    	  dxl2_fgpos[0] = -PI/3;
     		    	  dxl2_fgpos[1] = PI/3;
+
+
+
     		      break;
     		      default: break;
     		    }
@@ -284,8 +297,8 @@ int main()
        dxl2_present_position = DXL_TO_RADS*dynamixelController.dxl2_pre_pos;
        dxl1_present_velocity = DXLVEL_TO_RADS*dynamixelController.dxl1_pre_vel;
        dxl2_present_velocity = DXLVEL_TO_RADS*dynamixelController.dxl2_pre_vel;
-//       printf("PresPos_1:%03d\t   PresPos_2:%03d\n",  dxl1_present_position,   dxl2_present_position);
-//       printf("Presvel_1:%03d\t   PresVel_2:%03d\n",  dxl1_present_velocity,   dxl2_present_velocity);
+//       printf("PresPos_1:%03f\t   PresPos_2:%03f\n",  dxl1_present_position,   dxl2_present_position);
+//       printf("Presvel_1:%03f\t   PresVel_2:%03f\n",  dxl1_present_velocity,   dxl2_present_velocity);
 
        pthread_mutex_lock(&(autopilot_interface.joints_lock));
        autopilot_interface.mani_joints.joint_posi_1 = dxl1_present_position;
@@ -306,6 +319,7 @@ int main()
   // --------------------------------------------------------------------------
   //   Join threads of serial port
   // --------------------------------------------------------------------------
+
   pthread_join (autopilot_interface.read_tid, NULL);
   pthread_join (autopilot_interface.write_tid, NULL);
 
