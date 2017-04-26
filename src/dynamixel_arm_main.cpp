@@ -268,9 +268,6 @@ int main()
     		    	  dxl1_fgpos[1] = PI/4;
     		    	  dxl2_fgpos[0] = -PI/3;
     		    	  dxl2_fgpos[1] = PI/3;
-
-
-
     		      break;
     		      default: break;
     		    }
