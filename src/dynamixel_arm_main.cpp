@@ -93,7 +93,7 @@ int main()
   double dxl1_fgpos[2] = {PI/6, -PI/6};
   double dxl2_igpos;
   double dxl2_fgpos[2] = {-PI/2.5, PI/2.5};
-  double T = 2;
+  double T = 2.5;
   long time_stamp;
   long current_time;
   double t;
@@ -249,8 +249,8 @@ int main()
     		    	  model = 4;
     		    	  dxl1_fgpos[0] = -PI/4;
     		    	  dxl1_fgpos[1] = PI/4;
-    		    	  dxl2_fgpos[0] = -PI/3;
-    		    	  dxl2_fgpos[1] = -PI/3;
+    		    	  dxl2_fgpos[0] = -PI/2;
+    		    	  dxl2_fgpos[1] = -PI/2;
 
     		      break;
     		      case KEY5_ASCII_VALUE:
