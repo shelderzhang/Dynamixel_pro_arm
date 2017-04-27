@@ -222,10 +222,10 @@ int main()
     		      case KEY1_ASCII_VALUE:
     		    	  printf("key1\n");
     		    	  model = 1;
-    		    	  dxl1_fgpos[0] = PI/4;
-    		    	  dxl1_fgpos[1] = PI/4;
-    		    	  dxl2_fgpos[0] = -PI/6;
-    		    	  dxl2_fgpos[1] = -PI/6;
+    		    	  dxl1_fgpos[0] = 0;
+    		    	  dxl1_fgpos[1] = 0;
+    		    	  dxl2_fgpos[0] = 0;
+    		    	  dxl2_fgpos[1] = 0;
     		      break;
     		      case KEY2_ASCII_VALUE:
     		    	  printf("key2\n");
