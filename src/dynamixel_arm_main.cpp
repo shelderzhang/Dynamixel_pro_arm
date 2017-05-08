@@ -37,8 +37,8 @@
 #define LEN_PRO_INDIRECTDATA_FOR_READ           8
 
 #define BAUDRATE                        57600
-//#define DEVICENAME                      "/dev/Dypro_usb"      // Check which port is being used on your controller
-#define DEVICENAME                      "/dev/ttyUSB0"
+#define DEVICENAME                      "/dev/Dypro_usb"      // Check which port is being used on your controller
+
 
                                                          // ex) Windows: "COM1"   Linux: "/dev/ttyUSB0"
 // Protocol version
@@ -128,8 +128,8 @@ int main()
     return 0;
   }
 
-//  char *uart_name = (char*)"/dev/px4_usb";
-  char *uart_name = (char*)"/dev/ttyUSB1";
+  char *uart_name = (char*)"/dev/px4_usb";
+
   int baudrate = 115200;
   Autopilot_Interface *autopilot_interface_quit;
   Serial_Port *serial_port_quit;
