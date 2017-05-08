@@ -27,7 +27,7 @@
 #include "serial_port.h"
 
 // Control table address
-// Control table address is different in Dynamixel model
+
 
 #define ADDR_PRO_INDIRECTDATA_FOR_WRITE         634
 #define ADDR_PRO_INDIRECTDATA_FOR_READ          638
@@ -36,9 +36,9 @@
 #define LEN_PRO_INDIRECTDATA_FOR_WRITE          4
 #define LEN_PRO_INDIRECTDATA_FOR_READ           8
 
-#define BAUDRATE                        115200
-#define DEVICENAME                      "/dev/Dypro_usb"      // Check which port is being used on your controller
-
+#define BAUDRATE                        57600
+//#define DEVICENAME                      "/dev/Dypro_usb"      // Check which port is being used on your controller
+#define DEVICENAME                      "/dev/ttyUSB0"
 
                                                          // ex) Windows: "COM1"   Linux: "/dev/ttyUSB0"
 // Protocol version
@@ -128,7 +128,8 @@ int main()
     return 0;
   }
 
-  char *uart_name = (char*)"/dev/px4_usb";
+//  char *uart_name = (char*)"/dev/px4_usb";
+  char *uart_name = (char*)"/dev/ttyUSB1";
   int baudrate = 115200;
   Autopilot_Interface *autopilot_interface_quit;
   Serial_Port *serial_port_quit;
@@ -310,7 +311,7 @@ int main()
        autopilot_interface.mani_joints.joint_rate_4 = dxl2_gvel;
        pthread_mutex_unlock(&(autopilot_interface.joints_lock));
 
-
+//       usleep(5000);
 
   }
   // --------------------------------------------------------------------------

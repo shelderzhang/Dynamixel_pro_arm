@@ -81,6 +81,7 @@ int DynamixelController::torque_enable()
 	  if (dxl_comm_result != COMM_SUCCESS)
 	  {
 	    ph_hd->printTxRxResult(dxl_comm_result);
+	    fprintf(stderr, "[ID:%03d] torque_enable failed \n", DXL1_ID);
 	  }
 	  else if (dxl_error != 0)
 	  {
@@ -96,6 +97,7 @@ int DynamixelController::torque_enable()
 	  if (dxl_comm_result != COMM_SUCCESS)
 	  {
 	    ph_hd->printTxRxResult(dxl_comm_result);
+	    fprintf(stderr, "[ID:%03d] torque_enable failed \n", DXL2_ID);
 	  }
 	  else if (dxl_error != 0)
 	  {
@@ -103,7 +105,7 @@ int DynamixelController::torque_enable()
 	  }
 	  else
 	  {
-	    printf("Dynamixel#%d htorque enable \n", DXL2_ID);
+	    printf("Dynamixel#%d torque enable \n", DXL2_ID);
 	  }
 
 	  return 0;
@@ -128,6 +130,7 @@ int DynamixelController::indirectdata_parameter(int DXL_ID)
 		if (dxl_comm_result != COMM_SUCCESS)
 		{
 		    ph_hd->printTxRxResult(dxl_comm_result);
+		    fprintf(stderr, "[ID:%03d] POS write indirectdata_parameter failed \n", DXL_ID);
 		}
 	    else if (dxl_error != 0)
 		{
@@ -155,6 +158,7 @@ int DynamixelController::indirectdata_parameter(int DXL_ID)
 		if (dxl_comm_result != COMM_SUCCESS)
 		{
 		    ph_hd->printTxRxResult(dxl_comm_result);
+		    fprintf(stderr, "[ID:%03d] POS read indirectdata_parameter failed \n", DXL_ID);
 		}
 	    else if (dxl_error != 0)
 		{
@@ -168,6 +172,7 @@ int DynamixelController::indirectdata_parameter(int DXL_ID)
 		if (dxl_comm_result != COMM_SUCCESS)
 		{
 		    ph_hd->printTxRxResult(dxl_comm_result);
+		    fprintf(stderr, "[ID:%03d] VEL read indirectdata_parameter failed \n", DXL_ID);
 		}
 	    else if (dxl_error != 0)
 		{
@@ -305,6 +310,7 @@ int DynamixelController::torque_disable()
 	  if (dxl_comm_result != COMM_SUCCESS)
 	  {
 	    ph_hd->printTxRxResult(dxl_comm_result);
+	    fprintf(stderr, "[ID:%03d] torque_disable failed \n", DXL1_ID);
 	  }
 	  else if (dxl_error != 0)
 	  {
@@ -320,6 +326,7 @@ int DynamixelController::torque_disable()
 	  if (dxl_comm_result != COMM_SUCCESS)
 	  {
 	    ph_hd->printTxRxResult(dxl_comm_result);
+	    fprintf(stderr, "[ID:%03d] torque_disable failed \n", DXL2_ID);
 	  }
 	  else if (dxl_error != 0)
 	  {
