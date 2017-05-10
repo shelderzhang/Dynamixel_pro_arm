@@ -142,7 +142,7 @@ read_messages()
                 }
 				default:
 				{
-                    printf("Warning, did not handle message id %i\n",message.msgid);
+//                    printf("Warning, did not handle message id %i\n",message.msgid);
 					break;
 				}
             }
